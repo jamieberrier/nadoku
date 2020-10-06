@@ -4,11 +4,9 @@ import thunk from 'redux-thunk';
 import currentUser from './reducers/currentUser.js';
 import grid from './reducers/grid.js';
 import loginForm from './reducers/loginForm.js'
-import users from './reducers/users.js';
 
 const reducer = combineReducers({
   grid,
-  users,
   loginForm,
   currentUser
 })
