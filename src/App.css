@@ -23,7 +23,45 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  margin-bottom: 2rem;
 }
+
+.PuzzleContainer {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.cell {
+  width: 3rem;
+  height: 3rem;
+  font-size: 2rem;
+  text-align: center;
+  color: black;
+  border: 1px solid black;
+}
+
+.cell[readonly] {
+  color: blue;
+}
+
+input.selected  {
+  background-color: cyan;
+}
+
+input.incorrect {
+  color: red;
+}
+
+.rightborder {
+  border-right: 4px solid black;
+}
+
+.bottomborder {
+  border-bottom: 4px solid black;
+}
+
 /*
 .App-link {
   color: #61dafb;
