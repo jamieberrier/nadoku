@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import './App.css';
-import Login from './components/Login';
-import Logout from './components/Logout';
+import NavBar from './components/NavBar.js';
+import PuzzleContainer from './containers/PuzzleContainer';
 import { getCurrentUser } from './actions/currentUser.js'
 
 
@@ -16,22 +16,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1>Nadoku</h1>
-        </header>
-        {this.props.currentUser 
-          ? <Logout />
-          : <Login />
-        }
+        <NavBar />
+        <PuzzleContainer />
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ currentUser }) => {
-  return {
-    currentUser
-  }
-}
-
-export default connect(mapStateToProps, { getCurrentUser })(App);
+export default connect(null, { getCurrentUser })(App);
