@@ -19,16 +19,56 @@ jQuery methods.
 ### To Do
 
 - [ ] Sudoku Grid
-- [ ] Redux Set Up
+- [x] Redux Set Up
 - [ ] User Sign Up
-- [ ] User Log in
+- [x] User Log in
 - [ ] User Authentication
+- [ ] Nav Bar
 
 ### Stretch Goals
 
 - [ ] Timer
 - [ ] Best Time
 - [ ] Save Game
+
+------------------------------------------
+
+/*
+    stringToGrid
+      0: (9) ["4", "1", "2", "7", "3", "9", ".", ".", "."]
+      1: (9) ["6", "7", "8", "2", "5", ".", "3", ".", "9"]
+      2: (9) ["5", "9", "3", "8", "6", ".", "7", ".", "2"]
+      3: (9) ["7", "2", "5", "6", ".", "3", "4", "9", "1"]
+      4: (9) ["3", "6", "9", "1", "4", "5", "2", "8", "7"]
+      5: (9) ["1", ".", "4", "9", "7", ".", ".", "3", "."]
+      6: (9) ["2", ".", "7", "5", "1", "8", "9", "6", "."]
+      7: (9) [".", "5", ".", ".", "9", "7", "1", "2", "4"]
+      8: (9) ["9", "3", "1", "4", "2", "6", ".", "7", "."]
+   
+    stringToObject
+      {A1: "2", A2: "8", A3: ".", A4: ".", A5: ".", …}
+  */
+  generatePuzzle = (type = 'easy') => {
+    const puzzleString = sudoku.generator.generate(type)
+    const puzzleObject = sudoku.conversions.stringToObject(puzzleString)
+    const rows = []
+    const cells = Object.entries(puzzleObject).map(i => {
+      return {
+        coordinates: i[0],
+        value: i[1],
+        readOnly: i[1] !== "."
+      }
+    })
+    
+    for (let i = 0; i < cells.length; i += 9) {
+      let row = cells.slice(i, i+9)
+      rows.push(row)
+    }
+    return rows
+  }
+
+
+--------------------------------------------
 
 
 // ratepuzzle
