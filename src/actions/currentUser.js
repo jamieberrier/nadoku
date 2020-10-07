@@ -46,9 +46,7 @@ export const getCurrentUser = () => {
     })
     .then(response => response.json())
     .then(user => {
-      if (user.error) {
-        alert(user.error)
-      } else {
+      if (!!user.data.id) {
         dispatch(setCurrentUser(user.data.attributes))
       }
     })
@@ -61,6 +59,7 @@ export const logout = () => {
     // front end
     dispatch(clearCurrentUser())
     // back end
+    debugger
     return fetch('http://localhost:3000/api/v1/logout', {
       credentials: 'include',  
       method: 'DELETE'
