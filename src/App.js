@@ -14,13 +14,20 @@ class App extends Component {
   }
 
   render() {
+    const { currentUser } = this.props
     return (
       <div className="App">
         <NavBar />
-        <PuzzleContainer />
+        {currentUser && <PuzzleContainer />}
       </div>
     );
   }
 }
 
-export default connect(null, { getCurrentUser })(App);
+const mapStateToProps = ({ currentUser }) => {
+  return {
+    currentUser
+  }
+}
+
+export default connect(mapStateToProps, { getCurrentUser })(App);
