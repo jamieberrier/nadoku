@@ -2,11 +2,11 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 
 import currentUser from './reducers/currentUser.js';
-import grid from './reducers/grid.js';
+import puzzle from './reducers/puzzle.js';
 import loginForm from './reducers/loginForm.js'
 
 const reducer = combineReducers({
-  grid,
+  puzzle,
   loginForm,
   currentUser
 })
