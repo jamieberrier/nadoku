@@ -19,6 +19,13 @@ export const updateCellValue = (rowindex, id, value) => {
   }
 }
 
+export const clearPuzzle = (puzzle) => {
+  return {
+    type: 'CLEAR_PUZZLE',
+    puzzle
+  }
+}
+
 export const generatePuzzle = (level) => {
   const puzzleString = sudoku.generator.generate(level)
   const puzzleObject = sudoku.conversions.stringToObject(puzzleString)
