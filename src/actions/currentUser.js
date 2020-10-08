@@ -55,14 +55,19 @@ export const getCurrentUser = () => {
 }
 
 export const logout = () => {
+  // was getting warning: Form submission canceled because the form is not connected
+  // // added event.preventDefault() and it went away
+  // replaced ^^ with changing type from submit to button & onSubmit for onClick
   return dispatch => {
     // front end
     dispatch(clearCurrentUser())
     // back end
-    debugger
     return fetch('http://localhost:3000/api/v1/logout', {
       credentials: 'include',  
       method: 'DELETE'
     })
+    .then(response => response.json())
+    .then(message => alert(message.notice))
+    .catch(console.log)
   }
 }
