@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { setCellClass, updateCellValue } from '../actions/puzzle.js';
 
 const PuzzleGrid = ({ puzzle, updateCellValue }) => {
-
+  
   const handleOnChange = event => {
     const { id, value } = event.target
     const { rowindex } = event.target.dataset
