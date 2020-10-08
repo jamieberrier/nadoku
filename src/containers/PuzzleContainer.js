@@ -2,11 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import PuzzleGrid from '../components/PuzzleGrid';
-import { generatePuzzle } from '../actions/puzzle.js';
+import { generatePuzzle, clearPuzzle } from '../actions/puzzle.js';
+import { clearDifficulty } from '../actions/difficulty.js';
 
 class PuzzleContainer extends Component {
   componentDidMount() {
-    this.props.generatePuzzle('easy')
+    this.props.generatePuzzle(this.props.difficulty)
+  }
+
+  componentWillUnmount() {
+    this.props.clearPuzzle()
+    this.props.clearDifficulty()
   }
   
   render() {
@@ -18,4 +24,10 @@ class PuzzleContainer extends Component {
   }
 }
 
-export default connect(null, { generatePuzzle })(PuzzleContainer);
+const mapStateToProps = ({ difficulty }) => {
+  return {
+    difficulty
+  }
+}
+
+export default connect(mapStateToProps, { generatePuzzle, clearPuzzle, clearDifficulty })(PuzzleContainer);
