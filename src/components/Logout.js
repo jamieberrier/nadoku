@@ -14,8 +14,7 @@ const Logout = ({ logout }) => {
         <Button 
           color={'dark'}
           fullwidth={true} 
-          onClick={logout} 
-          size={'small'} 
+          onClick={logout}
         >
           Log Out
         </Button>
