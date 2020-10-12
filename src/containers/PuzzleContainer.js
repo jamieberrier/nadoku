@@ -7,7 +7,9 @@ import { Section, Container } from 'react-bulma-components';
 import PuzzleGrid from '../components/PuzzleGrid';
 import { generatePuzzle, clearPuzzle } from '../actions/puzzle.js';
 import { clearDifficulty } from '../actions/difficulty.js';
+import { clearSelectedNumber } from '../actions/selectedNumber.js';
 import NumberContainer from './NumberContainer';
+import NewGame from '../components/NewGame';
 
 class PuzzleContainer extends Component {
   componentDidMount() {
@@ -17,6 +19,7 @@ class PuzzleContainer extends Component {
   componentWillUnmount() {
     this.props.clearPuzzle()
     this.props.clearDifficulty()
+    this.props.clearSelectedNumber()
   }
   
   render() {
@@ -25,6 +28,7 @@ class PuzzleContainer extends Component {
         <Container id='PuzzleContainer'>
           <PuzzleGrid />
           <NumberContainer />
+          <NewGame />
         </Container>
       </Section>
     )
@@ -37,4 +41,4 @@ const mapStateToProps = ({ difficulty }) => {
   }
 }
 
-export default connect(mapStateToProps, { generatePuzzle, clearPuzzle, clearDifficulty })(PuzzleContainer);
+export default connect(mapStateToProps, { generatePuzzle, clearPuzzle, clearDifficulty, clearSelectedNumber })(PuzzleContainer);
