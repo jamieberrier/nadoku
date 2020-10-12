@@ -23,7 +23,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  margin-bottom: 2rem;
+  /*margin-bottom: 2rem;*/
 }
 
 .PuzzleContainer {
@@ -92,6 +92,14 @@ input.incorrect {
     color: black;
     border: 1px solid black;
   }
+
+  .rightborder {
+    border-right: 4px solid black;
+  }
+  
+  .bottomborder {
+    border-bottom: 4px solid black;
+  }
 }
 
 @media only screen and (max-width: 425px) {
@@ -103,6 +111,14 @@ input.incorrect {
     color: black;
     border: 1px solid black;
   }
+
+  .rightborder {
+    border-right: 4px solid black;
+  }
+  
+  .bottomborder {
+    border-bottom: 4px solid black;
+  }
 }
 
 @media only screen and (max-width: 350px) {
@@ -113,5 +129,13 @@ input.incorrect {
     text-align: center;
     color: black;
     border: 1px solid black;
+  }
+
+  .rightborder {
+    border-right: 4px solid black;
+  }
+  
+  .bottomborder {
+    border-bottom: 4px solid black;
   }
 }
