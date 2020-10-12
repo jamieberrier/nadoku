@@ -1,16 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Button, Container } from 'react-bulma-components';
 
-import { setSelectedNumber } from '../actions/selectedNumber.js';
-
-const NumberPad = ({ setSelectedNumber }) => {
-
-  const handleOnClick = (event) => {
-    setSelectedNumber(event.target.value)
-  }
+const NumberPad = ({ handleOnClick }) => {
 
   return (
     <Container>      
@@ -33,4 +26,4 @@ const NumberPad = ({ setSelectedNumber }) => {
   )
 }
 
-export default connect(null, ({ setSelectedNumber }))(NumberPad);
+export default NumberPad;
