@@ -6,13 +6,15 @@ import difficulty from './reducers/difficulty.js';
 import loginForm from './reducers/loginForm.js'
 import puzzle from './reducers/puzzle.js';
 import selectedNumber from './reducers/selectedNumber.js'
+import solution from './reducers/solution.js'
 
 const reducer = combineReducers({
   currentUser,
   difficulty,
   loginForm,
   puzzle,
-  selectedNumber
+  selectedNumber,
+  solution
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
