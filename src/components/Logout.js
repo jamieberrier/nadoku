@@ -2,14 +2,25 @@ import React from 'react';
 import { connect } from 'react-redux'
 
 import 'react-bulma-components/dist/react-bulma-components.min.css';
-import { Button } from 'react-bulma-components';
+import { Section, Container, Button } from 'react-bulma-components';
 
 import { logout } from '../actions/currentUser.js'
 
 const Logout = ({ logout }) => {
 
   return (
-    <Button onClick={logout} size={'small'} fullwidth={true} color={'white'}>Log Out</Button>
+    <Section>
+      <Container>
+        <Button 
+          color={'dark'}
+          fullwidth={true} 
+          onClick={logout} 
+          size={'small'} 
+        >
+          Log Out
+        </Button>
+      </Container>
+    </Section>
   )
 }
 
