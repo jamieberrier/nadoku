@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import 'react-bulma-components/dist/react-bulma-components.min.css';
+import { Section, Container } from 'react-bulma-components';
+
 import PuzzleGrid from '../components/PuzzleGrid';
 import { generatePuzzle, clearPuzzle } from '../actions/puzzle.js';
 import { clearDifficulty } from '../actions/difficulty.js';
+import NumberContainer from './NumberContainer';
 
 class PuzzleContainer extends Component {
   componentDidMount() {
@@ -17,9 +21,12 @@ class PuzzleContainer extends Component {
   
   render() {
     return (
-      <div className="PuzzleContainer">
-        <PuzzleGrid />
-      </div>
+      <Section>
+        <Container id='PuzzleContainer'>
+          <PuzzleGrid />
+          <NumberContainer />
+        </Container>
+      </Section>
     )
   }
 }
