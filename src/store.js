@@ -3,14 +3,16 @@ import thunk from 'redux-thunk';
 
 import currentUser from './reducers/currentUser.js';
 import difficulty from './reducers/difficulty.js';
-import puzzle from './reducers/puzzle.js';
 import loginForm from './reducers/loginForm.js'
+import puzzle from './reducers/puzzle.js';
+import selectedNumber from './reducers/selectedNumber.js'
 
 const reducer = combineReducers({
+  currentUser,
   difficulty,
-  puzzle,
   loginForm,
-  currentUser
+  puzzle,
+  selectedNumber
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
