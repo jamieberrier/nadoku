@@ -22,7 +22,7 @@ class App extends Component {
         <NavBarContainer />
         {!currentUser && <Login />}
         {currentUser && !difficulty && <DifficultyContainer />}
-        {difficulty && <PuzzleContainer />}
+        {currentUser && difficulty && <PuzzleContainer />}
         {currentUser && <Logout />}
       </div>
     );
