@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import './App.css';
-import NavBar from './containers/NavBar.js';
+import NavBarContainer from './containers/NavBarContainer.js';
+import DifficultyContainer from './containers/DifficultyContainer.js';
 import PuzzleContainer from './containers/PuzzleContainer';
+import Login from './components/Login.js';
+import Logout from './components/Logout.js';
 import { getCurrentUser } from './actions/currentUser.js'
 
 class App extends Component {
@@ -13,19 +16,23 @@ class App extends Component {
   }
 
   render() {
-    const { difficulty } = this.props
+    const { difficulty, currentUser } = this.props
     return (
       <div className="App">
-        <NavBar />
+        <NavBarContainer />
+        {!currentUser && <Login />}
+        {currentUser && !difficulty && <DifficultyContainer />}
         {difficulty && <PuzzleContainer />}
+        {currentUser && <Logout />}
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ difficulty }) => {
+const mapStateToProps = ({ difficulty, currentUser }) => {
   return {
-    difficulty
+    difficulty, 
+    currentUser
   }
 }
 
