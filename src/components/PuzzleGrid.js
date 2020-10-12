@@ -1,26 +1,22 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Container } from 'react-bulma-components';
 
+const PuzzleGrid = ({ puzzle, handleOnChange, handleOnClick }) => {
 
-import { setCellClass, updateCellValue } from '../actions/puzzle.js';
-
-const PuzzleGrid = ({ puzzle, selectedNumber, updateCellValue }) => {
-  
-  const handleOnClick = event => {
-    const { id } = event.target
-    const { rowindex } = event.target.dataset
-    updateCellValue(rowindex, id, selectedNumber)
+  const setCellClass = coordinates => {
+    if (coordinates === 'C3' || coordinates === 'F3' || coordinates === 'C6' || coordinates === 'F6') {
+      return "cell rightborder bottomborder"
+    } else if (coordinates.includes('C') || coordinates.includes('F')) {
+      return "cell bottomborder"
+    } else if (coordinates.includes('3') || coordinates.includes('6')) {
+      return "cell rightborder"
+    } else {
+      return "cell"
+    }
   }
 
-  const handleOnChange = event => {
-    const { id, value } = event.target
-    const { rowindex } = event.target.dataset
-    updateCellValue(rowindex, id, value)
-  }
-  
   const cells = puzzle.map((row, index) => 
     <div className="row" key={index}>
       {row.map(cell => {
@@ -46,11 +42,4 @@ const PuzzleGrid = ({ puzzle, selectedNumber, updateCellValue }) => {
   )
 }
 
-const mapStateToProps = ({ puzzle, selectedNumber }) => {
-  return {
-    puzzle,
-    selectedNumber
-  }
-}
-
-export default connect(mapStateToProps, { updateCellValue })(PuzzleGrid);
+export default PuzzleGrid;
