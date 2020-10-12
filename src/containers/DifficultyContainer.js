@@ -32,7 +32,7 @@ class DifficultyContainer extends Component {
           <Radio name={'difficulty'} value={'easy'} checked={this.state.selected === 'easy'} onChange={this.handleOnChange}> Easy</Radio>
           <Radio name={'difficulty'} value={'medium'} checked={this.state.selected === 'medium'} onChange={this.handleOnChange}> Medium</Radio>
           <Radio name={'difficulty'} value={'hard'} checked={this.state.selected === 'hard'} onChange={this.handleOnChange}> Hard</Radio>
-          <Button color={'dark'} onClick={this.handleOnClick} size={'small'} fullwidth={true}>Start Puzzle</Button>
+          <Button color={'dark'} onClick={this.handleOnClick} fullwidth={true}>Start Puzzle</Button>
         </Container>
       </Section>
     )
