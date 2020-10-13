@@ -52,7 +52,7 @@
   color: blue;
 }
 
-input.selected  {
+.selected  {
   background-color: cyan;
 }
 
