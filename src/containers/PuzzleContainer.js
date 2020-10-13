@@ -7,7 +7,7 @@ import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Section, Container } from 'react-bulma-components';
 
 import PuzzleGrid from '../components/PuzzleGrid';
-import { setPuzzle, clearPuzzle, updateCellValue } from '../actions/puzzle.js';
+import { setPuzzle, clearPuzzle, updateCellValue, setCellClass } from '../actions/puzzle.js';
 import { clearDifficulty } from '../actions/difficulty.js';
 import { clearSelectedNumber } from '../actions/selectedNumber.js';
 import { setSolution } from '../actions/solution.js';
@@ -32,10 +32,13 @@ class PuzzleContainer extends Component {
     const puzzleObject = sudoku.conversions.stringToObject(puzzleString)
     const rows = []
     const cells = Object.entries(puzzleObject).map(i => {
+      const value = i[1] !== "." ? i[1] : ""
       return {
         coordinates: i[0],
-        value: i[1],
-        readOnly: i[1] !== "."
+        value: value,
+        readOnly: value !== "",
+        disabled: value !== "",
+        className: setCellClass(i[0])
       }
     })
     
@@ -56,13 +59,23 @@ class PuzzleContainer extends Component {
   handleOnClick = event => {
     const { id } = event.target
     const { rowindex } = event.target.dataset
-    this.props.updateCellValue(rowindex, id, this.props.selectedNumber)
+
+    if (this.props.selectedNumber) {
+      this.props.updateCellValue(rowindex, id, this.props.selectedNumber)
+    }
   }
 
   handleOnChange = event => {
-    const { id, value } = event.target
+    const { id } = event.target
+    let { value } = event.target
     const { rowindex } = event.target.dataset
-    this.props.updateCellValue(rowindex, id, value)
+    // validate input
+    if (isNaN(value) || value < 1 || value > 9) {
+      //alert('Enter 0-9')
+      document.querySelector(`#${id}`).value = ""
+    } else {
+      this.props.updateCellValue(rowindex, id, value)
+    }
   }
 
   render() {
