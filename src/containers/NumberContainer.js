@@ -6,11 +6,27 @@ import { Section } from 'react-bulma-components';
 
 import NumberPad from '../components/NumberPad';
 import { setSelectedNumber } from '../actions/selectedNumber.js';
+import { highlightCells, setCellClass } from '../actions/puzzle.js';
 
 class NumberContainer extends Component {
 
-  handleOnClick = (event) => {
-    this.props.setSelectedNumber(event.target.value)
+  handleOnClick = event => {
+    const number = event.target.value
+    this.props.setSelectedNumber(number)
+
+    const rows = document.querySelector('#grid').children
+    
+    for (let i = 0; i < rows.length; i++) {
+      const row = rows[i];
+      for (let j = 0; j < row.children.length; j++) {
+        const cell = row.children[j];
+        if (cell.className.includes('selected')) {
+          cell.className = setCellClass(cell.id)
+        }
+      }
+    }
+    
+    this.props.highlightCells(number)
   }
 
   render() {
@@ -22,4 +38,4 @@ class NumberContainer extends Component {
   }
 }
 
-export default connect(null, ({ setSelectedNumber }))(NumberContainer);
+export default connect(null, ({ setSelectedNumber, highlightCells }))(NumberContainer);
