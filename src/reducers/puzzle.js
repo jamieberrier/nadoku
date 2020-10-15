@@ -16,22 +16,44 @@ export default (state = [], action) => {
     case "SET_PUZZLE":
       return state.concat(action.puzzle)
     case "UPDATE_CELL_VALUE":
+      console.log('updating', action.id)
       // filter instead?
       const rowIndex = parseInt(action.rowindex)
-      const row = [...state[rowIndex]]
-      const newRow = row.map(cell => {
+      const cellRow = [...state[rowIndex]]
+      const colNum = action.id.slice(-1)
+      let cellColumn = []
+
+      for (const row of [...state]) {
+        for (const cell of row) {
+          if (cell.coordinates.includes(colNum)) {
+            cellColumn.push(cell)
+          }
+        }
+      }
+
+      const rowMatch = cellRow.some(cell => cell.value === action.value)
+      const columnMatch = cellColumn.some(cell => cell.value === action.value)
+
+      const newRow = cellRow.map(cell => {
         if (cell.coordinates === action.id) {
-          // { coordinates: cell.coordinates, value: action.value, readOnly: cell.readOnly }
-          return Object.assign({}, cell, {value: action.value})
+          if (rowMatch || columnMatch) {
+            const conflict = cell.className + ' conflict'
+            return Object.assign({}, cell, {className: conflict, value: action.value})
+          } else if (cell.className.includes('conflict')) {
+            const newClass = cell.className.split(' conflict').shift()
+            return Object.assign({}, cell, {className: newClass, value: action.value})
+          } else {
+            // { coordinates: cell.coordinates, value: action.value, readOnly: cell.readOnly }
+            return Object.assign({}, cell, {value: action.value})
+          }
         }
         // return all the ones not changing
         return cell
       })
-      const newState = [...state.slice(0, rowIndex), newRow, ...state.slice(rowIndex+1)]
+      
+      const newState = [...state.slice(0, rowIndex), newRow, ...state.slice(rowIndex + 1)]
+      console.log('updated')
       return newState
-    case "CHECK_CELL_VALUE":
-      debugger
-      return state
     case "HIGHLIGHT_CELLS":
       return state.map(row => {
         return row.map(cell => {
