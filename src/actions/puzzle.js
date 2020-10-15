@@ -15,13 +15,6 @@ export const updateCellValue = (rowindex, id, value) => {
   }
 }
 
-export const checkCellValue = cell => {
-  return {
-    type: 'CHECK_CELL_VALUE',
-    cell
-  }
-}
-
 export const highlightCells = value => {
   return {
     type: 'HIGHLIGHT_CELLS',
