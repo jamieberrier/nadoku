@@ -53,13 +53,14 @@ class PuzzleContainer extends Component {
 
   generateSolution = puzzleString => {
     const solutionString = sudoku.solver.solve(puzzleString)
-    this.props.setSolution(solutionString)
+    const solution = sudoku.conversions.stringToGrid(solutionString)
+    this.props.setSolution(solution)
   }
 
   handleOnClick = event => {
     const { id } = event.target
     const { rowindex } = event.target.dataset
-
+    // using key pad
     if (this.props.selectedNumber) {
       this.props.updateCellValue(rowindex, id, this.props.selectedNumber)
     }
@@ -69,7 +70,7 @@ class PuzzleContainer extends Component {
     const { id } = event.target
     let { value } = event.target
     const { rowindex } = event.target.dataset
-    // validate input
+    // if typing, validate input
     if (isNaN(value) || value < 1 || value > 9) {
       //alert('Enter 0-9')
       document.querySelector(`#${id}`).value = ""
@@ -91,11 +92,12 @@ class PuzzleContainer extends Component {
   }
 }
 
-const mapStateToProps = ({ difficulty, puzzle, selectedNumber }) => {
+const mapStateToProps = ({ difficulty, puzzle, selectedNumber, solution }) => {
   return {
     difficulty,
     puzzle,
-    selectedNumber
+    selectedNumber,
+    solution
   }
 }
 
