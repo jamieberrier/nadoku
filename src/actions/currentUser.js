@@ -13,7 +13,8 @@ export const clearCurrentUser = () => {
 }
 
 // asyncronous action creators
-export const login = ({email, password}) => {
+export const login = ({email, password}, history) => {
+
   return dispatch => {
     return fetch('http://localhost:3000/api/v1/login', {
       credentials: 'include',  
@@ -29,6 +30,7 @@ export const login = ({email, password}) => {
         alert(user.error)
       } else {
         dispatch(setCurrentUser(user.data.attributes))
+        history.push('/')
       }
     })
     .catch(console.log)
