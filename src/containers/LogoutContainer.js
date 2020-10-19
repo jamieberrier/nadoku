@@ -1,5 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Section, Container, Button } from 'react-bulma-components';
@@ -10,14 +11,16 @@ const Logout = ({ logout }) => {
 
   return (
     <Section>
-      <Container>
-        <Button 
-          color={'dark'}
-          fullwidth={true} 
-          onClick={logout}
-        >
-          Log Out
-        </Button>
+      <Container id='LogoutContainer'>
+        <Link to='/'>
+          <Button 
+            color={'dark'}
+            fullwidth={true} 
+            onClick={logout}
+          >
+            Log Out
+          </Button>
+        </Link>
       </Container>
     </Section>
   )
