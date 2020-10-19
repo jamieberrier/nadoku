@@ -3,10 +3,11 @@ import thunk from 'redux-thunk';
 
 import currentUser from './reducers/currentUser.js';
 import difficulty from './reducers/difficulty.js';
-import loginForm from './reducers/loginForm.js'
+import loginForm from './reducers/loginForm.js';
 import puzzle from './reducers/puzzle.js';
-import selectedNumber from './reducers/selectedNumber.js'
-import solution from './reducers/solution.js'
+import selectedNumber from './reducers/selectedNumber.js';
+import signupForm from './reducers/signupForm.js';
+import solution from './reducers/solution.js';
 
 const reducer = combineReducers({
   currentUser,
@@ -14,6 +15,7 @@ const reducer = combineReducers({
   loginForm,
   puzzle,
   selectedNumber,
+  signupForm,
   solution
 })
 
