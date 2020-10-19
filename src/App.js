@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Route, withRouter } from 'react-router-dom';
 
 import './App.css';
 import NavBar from './components/NavBar.js';
+import Signup from './components/Signup.js';
+import Welcome from './components/Welcome.js';
 import DifficultyContainer from './containers/DifficultyContainer.js';
-import PuzzleContainer from './containers/PuzzleContainer';
+//import PuzzleContainer from './containers/PuzzleContainer';
 import LoginContainer from './containers/LoginContainer.js';
 import LogoutContainer from './containers/LogoutContainer.js';
-import { getCurrentUser } from './actions/currentUser.js'
+import { getCurrentUser } from './actions/currentUser.js';
+import PuzzleContainer from './containers/PuzzleContainer';
 
 class App extends Component {
 
@@ -16,24 +20,24 @@ class App extends Component {
   }
 
   render() {
-    const { difficulty, currentUser } = this.props
+    const { loggedIn } = this.props
     return (
       <div className="App">
         <NavBar />
-        {!currentUser && <LoginContainer />}
-        {currentUser && !difficulty && <DifficultyContainer />}
-        {currentUser && difficulty && <PuzzleContainer />}
-        {currentUser && <LogoutContainer />}
+        <Route exact path='/' render={() => loggedIn ? <DifficultyContainer /> : <Welcome />}/>
+        <Route exact path='/login' component={LoginContainer}/>
+        <Route exact path='/signup' component={Signup}/>
+        <Route exact path='/puzzle' component={PuzzleContainer}/>
+        {loggedIn && <LogoutContainer />}
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ difficulty, currentUser }) => {
+const mapStateToProps = ({ currentUser }) => {
   return {
-    difficulty, 
-    currentUser
+    loggedIn: !!currentUser
   }
 }
 
-export default connect(mapStateToProps, { getCurrentUser })(App);
+export default withRouter(connect(mapStateToProps, { getCurrentUser })(App));
