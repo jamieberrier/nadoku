@@ -6,9 +6,9 @@ import { Section, Container, Button, Heading } from 'react-bulma-components';
 
 const Welcome = () => {
   return (
-    <Section>
+    <Section id='WelcomeSection'>
       <Heading size={5}>Welcome to Nadoku!</Heading>
-      <Container>
+      <Container id='WelcomeContainer'>
         <Button.Group position={'centered'}>
           <Link to='/login'>
             <Button color={'success'}>Log In</Button>
