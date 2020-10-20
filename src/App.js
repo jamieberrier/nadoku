@@ -3,14 +3,13 @@ import { connect } from 'react-redux';
 import { Route, withRouter } from 'react-router-dom';
 
 import './App.css';
+import { getCurrentUser } from './actions/currentUser.js';
 import NavBar from './components/NavBar.js';
 import Signup from './components/Signup.js';
 import Welcome from './components/Welcome.js';
 import DifficultyContainer from './containers/DifficultyContainer.js';
-//import PuzzleContainer from './containers/PuzzleContainer';
 import LoginContainer from './containers/LoginContainer.js';
 import LogoutContainer from './containers/LogoutContainer.js';
-import { getCurrentUser } from './actions/currentUser.js';
 import PuzzleContainer from './containers/PuzzleContainer';
 
 class App extends Component {
