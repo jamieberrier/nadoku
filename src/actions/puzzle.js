@@ -1,8 +1,12 @@
+import SudokuToolCollection from 'sudokutoolcollection';
+
+const sudoku = SudokuToolCollection()
+
 // syncronous action creators
-export const setPuzzle = puzzle => {
+export const setPuzzle = rows => {
   return {
     type: 'SET_PUZZLE',
-    puzzle
+    rows
   }
 }
 
@@ -38,5 +42,33 @@ export const setCellClass = coordinates => {
     return "cell rightborder"
   } else {
     return "cell"
+  }
+}
+
+export const generatePuzzle = ({ puzzleString }) => {
+  return dispatch => {
+    //const puzzleString = sudoku.generator.generate(level)
+    //console.log(puzzleString)
+    const puzzleObject = sudoku.conversions.stringToObject(puzzleString)
+    //const solutionString = sudoku.solver.solve(puzzleString)
+    //const solution = sudoku.conversions.stringToObject(solutionString)
+    const rows = []
+    const cells = Object.entries(puzzleObject).map(i => {
+      const value = i[1] !== "." ? i[1] : ""
+      return {
+        coordinates: i[0],
+        value: value,
+        readOnly: value !== "",
+        disabled: value !== "",
+        className: setCellClass(i[0])
+      }
+    })
+    
+    for (let i = 0; i < cells.length; i += 9) {
+      let row = cells.slice(i, i+9)
+      rows.push(row)
+    }
+
+    return dispatch(setPuzzle(rows))
   }
 }
