@@ -1,52 +1,66 @@
 ## Requirements
 
-[ ] The code should be written in ES6 as much as possible
+[x] The code should be written in ES6 as much as possible
 [x] Use the `create-react-app` generator to start your project.
 	[x] Follow the instructions on this repo to setup the generator: [create-react-app](https://github.com/facebookincubator/create-react-app)
 [x] Your app should have one HTML page to render your react-redux application
 [ ] There should be 2 container components
   - DifficultyContainer
-  - PuzzleContainer
   - LoginContainer
   - LogoutContainer
   - NewGameContainer
   - NumberContainer
+  - PuzzleContainer
 [ ] There should be 5 stateless components
-  - PuzzleGrid
   - NavBar
   - NumberPad
-[ ] There should be 3 routes
-  - 
-  - 
-  - 
-[ ] The Application must make use of `react-router` and proper RESTful routing (should you choose to use react-router v3 please refer to the appropriate [docs](https://github.com/ReactTraining/react-router/tree/v3/docs); docs for v4 can be found [here](https://reacttraining.com/react-router/web/guides/quick-start))
+  - PuzzleGrid
+  - Signup
+  - Welcome
+[x] There should be 3 routes
+  - /signup
+  - /login
+  - /
+    - select difficulty
+    - select nature sounds
+  - /puzzle
+    - solve puzzle
+    - listen to nature sounds
+[x] The Application must make use of `react-router` and proper RESTful routing (should you choose to use react-router v3 please refer to the appropriate [docs](https://github.com/ReactTraining/react-router/tree/v3/docs); docs for v4 can be found [here](https://reacttraining.com/react-router/web/guides/quick-start))
 [x] Use Redux middleware to respond to and modify state change
 [x] Make use of async actions and `redux-thunk` middleware to send data to and receive data from a server
-[ ] Your Rails API should handle the data persistence with a database. You should be using `fetch()` within your actions to GET and POST data from your API - do not use jQuery methods.
-[ ] Your client-side application should handle the display of data with minimal data manipulation
-[ ] Your application should have some minimal styling: feel free to stick to a framework (like react-bootstrap), but if you want to write (additional) CSS yourself, go for it!
+[x] Your Rails API should handle the data persistence with a database. You should be using `fetch()` within your actions to GET and POST data from your API - do not use jQuery methods.
+[x] Your client-side application should handle the display of data with minimal data manipulation
+[x] Your application should have some minimal styling: feel free to stick to a framework (like react-bootstrap), but if you want to write (additional) CSS yourself, go for it!
 [ ] [Once your app is complete, fill out this checklist.](https://goo.gl/forms/ULtKsxuzWomvXuTk2)
 
 ### To Do
 
 - [x] Sudoku Grid
 - [x] Redux Set Up
-- [ ] User Sign Up
+- [x] User Sign Up
 - [x] User Log in
 - [ ] User Authentication
 - [ ] Nav Bar
-- [ ] React Router
+- [x] React Router
 - [x] Render a different puzzle
 - [x] generate solution
-- check entry against solution
+- [x] check entry for conflicts 
+  - check square
+- check complete puzzle against solution
 - check if puzzle solved
+- change logged out alert to notification
 - stop clearing puzzle/difficulty on refresh
+- add spotify
+- add username
+- route protection
 
 ### Stretch Goals
 
 - [ ] Timer
 - [ ] Best Time
 - [ ] Save Game
+- [ ] notes/pencil mode
 
 <Heading size={5} renderAs="p">Default</Heading>
 
