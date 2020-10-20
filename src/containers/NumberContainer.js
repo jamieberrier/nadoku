@@ -31,7 +31,7 @@ class NumberContainer extends Component {
 
   render() {
     return (
-      <Section>
+      <Section id='NumberSection'>
         <NumberPad handleOnClick={this.handleOnClick} />
       </Section>
     )

@@ -36,7 +36,7 @@ class PuzzleContainer extends Component {
   
   render() {
     return (
-      <Section>
+      <Section id='PuzzleSection'>
         {this.props.puzzle.length === 9 &&
           <Container id='PuzzleContainer'>
             <PuzzleGrid puzzle={this.props.puzzle} handleOnChange={this.handleOnChange} handleOnClick={this.handleOnClick} />

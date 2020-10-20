@@ -24,7 +24,7 @@ class NewGameContainer extends Component {
 
   render() {
     return (
-      <Section>
+      <Section id='NewGameSection'>
         <Container id='NewGameContainer'>
          <Link to='/'>
            <ButtonFullWidth 

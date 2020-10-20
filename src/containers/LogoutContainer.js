@@ -26,7 +26,7 @@ class Logout extends Component {
 
   render() {
     return (
-      <Section>
+      <Section id='LogoutSection'>
         <Container id='LogoutContainer'>
           <Link to='/'>
             <ButtonFullWidth text={'Log Out'} color={'dark'} handleOnClick={this.handleOnClick} />
