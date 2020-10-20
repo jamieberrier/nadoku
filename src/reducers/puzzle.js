@@ -11,12 +11,12 @@
   color={}
 />
 */
+
 export default (state = [], action) => {
   switch (action.type) {
     case "SET_PUZZLE":
-      return state.concat(action.puzzle)
+      return state.concat(action.rows)
     case "UPDATE_CELL_VALUE":
-      console.log('updating', action.id)
       // filter instead?
       const rowIndex = parseInt(action.rowindex)
       const cellRow = [...state[rowIndex]]
@@ -50,10 +50,7 @@ export default (state = [], action) => {
         // return all the ones not changing
         return cell
       })
-      
-      const newState = [...state.slice(0, rowIndex), newRow, ...state.slice(rowIndex + 1)]
-      console.log('updated')
-      return newState
+      return [...state.slice(0, rowIndex), newRow, ...state.slice(rowIndex + 1)]
     case "HIGHLIGHT_CELLS":
       return state.map(row => {
         return row.map(cell => {
