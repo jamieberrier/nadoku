@@ -26,18 +26,18 @@
   /*margin-bottom: 2rem;*/
 }
 
-.PuzzleContainer {
+/*.PuzzleContainer {
   display: flex;
   min-height: 100vh;
   align-items: center;
   justify-content: center;
 }
 
-.grid {
+.PuzzleGrid {
   min-height: 100vh;
   align-items: center;
   justify-content: center;
-}
+}*/
 
 .cell {
   width: 3rem;
