@@ -14,7 +14,7 @@ class NumberContainer extends Component {
     const number = event.target.value
     this.props.setSelectedNumber(number)
 
-    const rows = document.querySelector('#grid').children
+    const rows = document.querySelector('#PuzzleGrid').children
     
     for (let i = 0; i < rows.length; i++) {
       const row = rows[i];
