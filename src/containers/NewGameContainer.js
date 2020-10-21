@@ -6,6 +6,7 @@ import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Section, Container } from 'react-bulma-components';
 
 import { clearDifficulty } from '../actions/difficulty.js';
+import { clearIsSolved } from '../actions/isSolved.js';
 import { clearPuzzle } from '../actions/puzzle.js';
 import { clearPuzzleRaw } from '../actions/puzzleRaw.js';
 import { clearSelectedNumber } from '../actions/selectedNumber.js';
@@ -20,6 +21,7 @@ class NewGameContainer extends Component {
     this.props.clearSolution()
     this.props.clearPuzzle()
     this.props.clearSelectedNumber()
+    this.props.clearIsSolved()
   }
 
   render() {
@@ -39,4 +41,4 @@ class NewGameContainer extends Component {
   }
 }
 
-export default connect(null, ({ clearDifficulty, clearPuzzle, clearPuzzleRaw, clearSelectedNumber, clearSolution }))(NewGameContainer);
+export default connect(null, ({ clearDifficulty, clearIsSolved, clearPuzzle, clearPuzzleRaw, clearSelectedNumber, clearSolution }))(NewGameContainer);
