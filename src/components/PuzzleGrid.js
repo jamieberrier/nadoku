@@ -16,7 +16,8 @@ const PuzzleGrid = ({ puzzle, handleOnChange, handleOnClick }) => {
           onClick={handleOnClick}
           readOnly={cell.readOnly}
           data-rowindex={index}
-          defaultValue={cell.value}
+          value={cell.value}
+          //defaultValue={cell.value}
           disabled={cell.disabled}
           type='tel'
         />
