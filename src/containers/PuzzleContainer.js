@@ -8,9 +8,16 @@ import DifficultyContainer from './DifficultyContainer';
 import NewGameContainer from './NewGameContainer';
 import NumberContainer from './NumberContainer';
 import PuzzleGrid from '../components/PuzzleGrid';
+import { checkIfSolved } from '../actions/isSolved.js';
 import { updateCellValue } from '../actions/puzzle.js';
 
 class PuzzleContainer extends Component {
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.puzzle !== this.props.puzzle) {
+      this.props.checkIfSolved(this.props.puzzle, this.props.solution)
+    }
+  }
 
   handleOnClick = event => {
     const { id } = event.target
@@ -44,6 +51,7 @@ class PuzzleContainer extends Component {
             <NewGameContainer />
           </Container>
         }
+        {this.props.isSolved && alert('Solved!')}
         {this.props.puzzle.length === 0 &&
           <DifficultyContainer />
         }
@@ -52,12 +60,13 @@ class PuzzleContainer extends Component {
   }
 }
 
-const mapStateToProps = ({ difficulty, puzzle, selectedNumber }) => {
+const mapStateToProps = ({ isSolved, puzzle, selectedNumber, solution }) => {
   return {
-    difficulty,
+    isSolved,
     puzzle,
-    selectedNumber
+    selectedNumber,
+    solution
   }
 }
 
-export default connect(mapStateToProps, { updateCellValue })(PuzzleContainer);
+export default connect(mapStateToProps, { updateCellValue, checkIfSolved })(PuzzleContainer);
