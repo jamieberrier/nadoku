@@ -26,7 +26,7 @@ const PuzzleGrid = ({ puzzle, handleOnChange, handleOnClick }) => {
       
   return (
     <Container id='PuzzleGrid'>
-        {cells}
+      {cells}
     </Container>
   )
 }
