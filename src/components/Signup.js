@@ -1,9 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import { signup } from '../actions/signupForm.js'
-import { updateSignupForm, resetSignupForm } from '../actions/signupForm.js'
+import { connect } from 'react-redux';
 
-const Signup = ({ signupFormData, updateSignupForm, signup }) => {
+import 'react-bulma-components/dist/react-bulma-components.min.css';
+import { Container, Form, Section } from 'react-bulma-components';
+
+import { resetSignupForm, signup, updateSignupForm } from '../actions/signupForm.js';
+import ButtonFullWidth from './ButtonFullWidth';
+
+const { Input, Field, Control, Label } = Form;
+
+const Signup = ({ history, signupFormData, signup, updateSignupForm }) => {
 
   const handleOnChange = event => {
     const { name, value } = event.target
@@ -16,38 +22,56 @@ const Signup = ({ signupFormData, updateSignupForm, signup }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    signup(signupFormData)
+    signup(signupFormData, history)
     resetSignupForm()
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input 
-        name='email'
-        onChange={handleOnChange}
-        placeholder='Enter Email Address'
-        type='text'
-        value={signupFormData.email}
-      />
-      <input 
-        name='password'
-        onChange={handleOnChange}
-        placeholder='Enter Password'
-        type='text'
-        value={signupFormData.password}
-      />
-      <input 
-        name='passwordConfirmation'
-        onChange={handleOnChange}
-        placeholder='Re-enter Password'
-        type='text'
-        value={signupFormData.passwordConfirmation}
-      />
-      <input 
-        type='submit'
-        value='Sign Up'
-      />
-    </form>
+    <Section id='SignupSection'>
+      <Container id='SignupContainer'>
+        <Field>
+          <Label>Email</Label>
+          <Control>
+            <Input 
+              name='email'
+              onChange={handleOnChange}
+              placeholder='Enter Email Address'
+              type='text'
+              value={signupFormData.email}
+            />
+          </Control>
+        </Field>
+        <Field>
+          <Label>Password</Label>
+          <Control>
+            <Input 
+              name='password'
+              onChange={handleOnChange}
+              placeholder='Enter Password'
+              type='password'
+              value={signupFormData.password}
+            />
+          </Control>
+        </Field>
+        <Field>
+          <Label>Password Confirmation</Label>
+          <Control>
+            <Input 
+              name='passwordConfirmation'
+              onChange={handleOnChange}
+              placeholder='Re-enter Password'
+              type='password'
+              value={signupFormData.passwordConfirmation}
+            />
+          </Control>
+        </Field>
+        <Field>
+          <Control>
+            <ButtonFullWidth color={'dark'} text={'Sign Up'} handleOnClick={handleSubmit} />
+          </Control>
+        </Field>
+      </Container>
+    </Section>
   )
 }
 
@@ -58,4 +82,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { updateSignupForm, signup })(Signup);
+export default connect(mapStateToProps, { signup, updateSignupForm })(Signup);
