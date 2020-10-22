@@ -6,10 +6,6 @@
 [x] Your app should have one HTML page to render your react-redux application
 [x] There should be 2 container components
   - DifficultyContainer
-  - LoginContainer
-  - LogoutContainer
-  - NewGameContainer
-  - NumberContainer
   - PuzzleContainer
 [x] There should be 5 stateless components
   - ButtonFullWidth
@@ -18,6 +14,10 @@
   - PuzzleGrid
   - Signup
   - Welcome
+  - LoginContainer
+  - LogoutContainer
+  - NewGameContainer
+  - NumberContainer
 [x] There should be 3 routes
   - /signup
   - /login
@@ -48,13 +48,16 @@
 - [x] generate solution
 - [x] check entry for conflicts 
   - check square
-- check complete puzzle against solution
-- check if puzzle solved
-- change logged out alert to notification
+- [x] check complete puzzle against solution
+- [x] check if puzzle solved
+- [] style sign up form
+- [] add cancel button to sign up and log in forms
+- [] display puzzle level during game
+- [] change logged out alert to notification
 - stop clearing puzzle/difficulty on refresh
 - add spotify
 - add username
-- route protection
+- route protection / authenticate route
 
 ### Stretch Goals
 
@@ -62,6 +65,10 @@
 - [ ] Best Time
 - [ ] Save Game
 - [ ] notes/pencil mode
+- [ ] undo 
+        // state = {
+        //  history = [[pos, 1]]
+        //}
 
 <Heading size={5} renderAs="p">Default</Heading>
 
