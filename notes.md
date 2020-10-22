@@ -56,7 +56,11 @@
 - [] change logged out alert to notification
 - stop clearing puzzle/difficulty on refresh
 - add spotify
-- add username
+- [x] add username field to backend
+- [x] add username field to signup form
+- [] customize and stylize validation error messages (sign up and log in)
+  - log in - 'Invalid Credentials'
+  - sign up - e.g. 'Password confirmation doesn't match Password,Password confirmation doesn't match Password,Email has already been taken,Username can't be blank'
 - route protection / authenticate route
 
 ### Stretch Goals
