@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -11,30 +11,28 @@ import { clearPuzzleRaw } from '../actions/puzzleRaw.js';
 import { clearSelectedNumber } from '../actions/selectedNumber.js';
 import { clearSolution } from '../actions/solution.js';
 import { logout } from '../actions/currentUser.js'
-import ButtonFullWidth from '../components/ButtonFullWidth.js';
+import ButtonFullWidth from './ButtonFullWidth.js';
 
-class Logout extends Component {
+const Logout = ({ clearDifficulty,  clearPuzzle, clearPuzzleRaw, clearSelectedNumber, clearSolution, logout }) => {
 
-  handleOnClick = () => {
-    this.props.clearDifficulty()
-    this.props.clearPuzzleRaw()
-    this.props.clearSolution()
-    this.props.clearPuzzle()
-    this.props.clearSelectedNumber()
-    this.props.logout()
+  const handleOnClick = () => {
+    clearDifficulty()
+    clearPuzzleRaw()
+    clearSolution()
+    clearPuzzle()
+    clearSelectedNumber()
+    logout()
   }
-
-  render() {
-    return (
-      <Section id='LogoutSection'>
-        <Container id='LogoutContainer'>
-          <Link to='/'>
-            <ButtonFullWidth text={'Log Out'} color={'dark'} handleOnClick={this.handleOnClick} />
-          </Link>
-        </Container>
-      </Section>
-    )
-  }
+  
+  return (
+    <Section id='LogoutSection'>
+      <Container id='LogoutContainer'>
+        <Link to='/'>
+          <ButtonFullWidth text={'Log Out'} color={'dark'} handleOnClick={handleOnClick} />
+        </Link>
+      </Container>
+    </Section>
+  )
 }
 
 export default connect(null, { clearDifficulty,  clearPuzzle, clearPuzzleRaw, clearSelectedNumber, clearSolution, logout })(Logout);
