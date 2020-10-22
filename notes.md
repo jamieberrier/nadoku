@@ -50,8 +50,8 @@
   - check square
 - [x] check complete puzzle against solution
 - [x] check if puzzle solved
-- [] style sign up form
-- [] add cancel button to sign up and log in forms
+- [x] style sign up form
+- [x] add cancel button to sign up and log in forms
 - [] display puzzle level during game
 - [] change logged out alert to notification
 - stop clearing puzzle/difficulty on refresh
