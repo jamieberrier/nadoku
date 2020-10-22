@@ -25,7 +25,6 @@ const Login = ({ history, loginFormData, login, resetLoginForm, updateLoginForm 
   const handleSubmit = event => {
     event.preventDefault()
     login(loginFormData, history)
-    resetLoginForm()
   }
 
   const handleOnClick = () => {
