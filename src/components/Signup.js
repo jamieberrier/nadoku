@@ -24,7 +24,6 @@ const Signup = ({ history, signupFormData, resetSignupForm, signup, updateSignup
   const handleSubmit = (event) => {
     event.preventDefault()
     signup(signupFormData, history)
-    resetSignupForm()
   }
 
   const handleOnClick = () => {
@@ -34,6 +33,18 @@ const Signup = ({ history, signupFormData, resetSignupForm, signup, updateSignup
   return (
     <Section id='SignupSection'>
       <Container id='SignupContainer'>
+        <Field>
+          <Label>Username</Label>
+          <Control>
+            <Input 
+              name='username'
+              onChange={handleOnChange}
+              placeholder='Enter Username'
+              type='text'
+              value={signupFormData.username}
+            />
+          </Control>
+        </Field>
         <Field>
           <Label>Email</Label>
           <Control>
@@ -94,4 +105,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { signup, resetSignupForm, updateSignupForm })(Signup);
+export default connect(mapStateToProps, { resetSignupForm, signup, updateSignupForm })(Signup);
