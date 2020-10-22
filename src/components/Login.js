@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import 'react-bulma-components/dist/react-bulma-components.min.css';
-import { Section, Container, Form } from 'react-bulma-components';
+import { Container, Form, Section } from 'react-bulma-components';
 
 import { login } from '../actions/currentUser.js';
 import { updateLoginForm, resetLoginForm} from '../actions/loginForm.js';
@@ -24,6 +25,10 @@ const Login = ({ history, loginFormData, login, resetLoginForm, updateLoginForm 
   const handleSubmit = event => {
     event.preventDefault()
     login(loginFormData, history)
+    resetLoginForm()
+  }
+
+  const handleOnClick = () => {
     resetLoginForm()
   }
 
@@ -57,6 +62,13 @@ const Login = ({ history, loginFormData, login, resetLoginForm, updateLoginForm 
         <Field>
           <Control>
             <ButtonFullWidth color={'dark'} text={'Log In'} handleOnClick={handleSubmit} />
+          </Control>
+        </Field>
+        <Field>
+          <Control>
+            <Link to='/'>
+              <ButtonFullWidth color={'danger'} outlined={true} text={'Cancel'} handleOnClick={handleOnClick} />
+            </Link>
           </Control>
         </Field>
       </Container>

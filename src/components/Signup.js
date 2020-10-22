@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Container, Form, Section } from 'react-bulma-components';
@@ -9,7 +10,7 @@ import ButtonFullWidth from './ButtonFullWidth';
 
 const { Input, Field, Control, Label } = Form;
 
-const Signup = ({ history, signupFormData, signup, updateSignupForm }) => {
+const Signup = ({ history, signupFormData, resetSignupForm, signup, updateSignupForm }) => {
 
   const handleOnChange = event => {
     const { name, value } = event.target
@@ -23,6 +24,10 @@ const Signup = ({ history, signupFormData, signup, updateSignupForm }) => {
   const handleSubmit = (event) => {
     event.preventDefault()
     signup(signupFormData, history)
+    resetSignupForm()
+  }
+
+  const handleOnClick = () => {
     resetSignupForm()
   }
 
@@ -70,6 +75,13 @@ const Signup = ({ history, signupFormData, signup, updateSignupForm }) => {
             <ButtonFullWidth color={'dark'} text={'Sign Up'} handleOnClick={handleSubmit} />
           </Control>
         </Field>
+        <Field>
+          <Control>
+            <Link to='/'>
+              <ButtonFullWidth color={'danger'} outlined={true} text={'Cancel'} handleOnClick={handleOnClick} />
+            </Link>
+          </Control>
+        </Field>
       </Container>
     </Section>
   )
@@ -82,4 +94,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { signup, updateSignupForm })(Signup);
+export default connect(mapStateToProps, { signup, resetSignupForm, updateSignupForm })(Signup);
