@@ -15,7 +15,7 @@ export const resetSignupForm = () => {
 }
 
 // asyncronous action creators
-export const signup = ({email, password, passwordConfirmation}) => {
+export const signup = ({email, password, passwordConfirmation}, history) => {
   let bodyData = {
     user: {
       email,
@@ -42,6 +42,7 @@ export const signup = ({email, password, passwordConfirmation}) => {
         alert(user.errors)
       } else {
         dispatch(setCurrentUser(user.data.attributes))
+        history.push('/')
       }
     })
     .catch(error => alert(error.message))
