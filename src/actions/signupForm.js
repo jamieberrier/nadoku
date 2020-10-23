@@ -1,4 +1,5 @@
 import { setCurrentUser } from './currentUser.js';
+import { showModal } from './displayModal.js';
 
 export const updateSignupForm = formData => {
   return {
@@ -40,7 +41,7 @@ export const signup = ({email, username, password, passwordConfirmation}, histor
     .then(response => response.json())
     .then(user => {
       if (user.errors) {
-        alert(user.errors)
+        dispatch(showModal('danger', user.errors))
       } else {
         dispatch(setCurrentUser(user.data.attributes))
         dispatch(resetSignupForm())
