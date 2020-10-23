@@ -1,4 +1,5 @@
 import { resetLoginForm } from './loginForm';
+import { showModal } from './displayModal.js';
 
 // syncronous action creators
 export const setCurrentUser = user => {
@@ -29,7 +30,7 @@ export const login = ({email, password}, history) => {
     .then(response => response.json())
     .then(user => {
       if (user.error) {
-        alert(user.error)
+        dispatch(showModal('danger', user.error))
       } else {
         dispatch(setCurrentUser(user.data.attributes))
         dispatch(resetLoginForm())
@@ -72,7 +73,7 @@ export const logout = () => {
       method: 'DELETE'
     })
     .then(response => response.json())
-    .then(message => alert(message.notice))
+    .then(message => dispatch(showModal('warning', message.notice)))
     .catch(console.log)
   }
 }
