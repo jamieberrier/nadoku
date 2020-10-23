@@ -19,7 +19,6 @@ export const clearSolution = () => {
 export const generateSolution = ({ puzzleString }) => {
   return dispatch => {
     const solution = sudoku.solver.solve(puzzleString)
-    //const solution = sudoku.conversions.stringToObject(solutionString)
     return dispatch(setSolution(solution))
   }
 }
