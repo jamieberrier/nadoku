@@ -47,11 +47,7 @@ export const setCellClass = coordinates => {
 
 export const generatePuzzle = ({ puzzleString }) => {
   return dispatch => {
-    //const puzzleString = sudoku.generator.generate(level)
-    //console.log(puzzleString)
     const puzzleObject = sudoku.conversions.stringToObject(puzzleString)
-    //const solutionString = sudoku.solver.solve(puzzleString)
-    //const solution = sudoku.conversions.stringToObject(solutionString)
     const rows = []
     const cells = Object.entries(puzzleObject).map(i => {
       const value = i[1] !== "." ? i[1] : ""
