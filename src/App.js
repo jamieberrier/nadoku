@@ -11,6 +11,7 @@ import Welcome from './components/Welcome.js';
 import DifficultyContainer from './containers/DifficultyContainer.js';
 import Logout from './components/Logout.js';
 import PuzzleContainer from './containers/PuzzleContainer';
+import ModalContainer from './containers/ModalContainer';
 
 class App extends Component {
 
@@ -19,7 +20,7 @@ class App extends Component {
   }
 
   render() {
-    const { loggedIn } = this.props
+    const { loggedIn, displayModal } = this.props
     return (
       <div className="App">
         <NavBar />
@@ -28,14 +29,16 @@ class App extends Component {
         <Route exact path='/signup' component={Signup}/>
         <Route exact path='/puzzle' component={PuzzleContainer}/>
         {loggedIn && <Logout />}
+        {displayModal.show && <ModalContainer />}
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ currentUser }) => {
+const mapStateToProps = ({ currentUser, displayModal }) => {
   return {
-    loggedIn: !!currentUser
+    loggedIn: !!currentUser,
+    displayModal
   }
 }
 
