@@ -1,3 +1,5 @@
+import { showModal } from './displayModal';
+
 // syncronous action creators
 export const setIsSolved = isSolved => {
   return {
@@ -24,6 +26,7 @@ export const checkIfSolved = (puzzle, solution) => {
     
     if (cellValues.every(filled)) {
       if (cellValues.join('') === solution) {
+        dispatch(showModal('success', 'Puzzle Solved!'))
         return dispatch(setIsSolved(true))
       }
     }
@@ -31,4 +34,3 @@ export const checkIfSolved = (puzzle, solution) => {
     return dispatch(setIsSolved(false))
   }
 }
-  
