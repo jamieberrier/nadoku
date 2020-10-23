@@ -2,19 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import 'react-bulma-components/dist/react-bulma-components.min.css';
-import { Section, Container, Modal, Heading } from 'react-bulma-components';
+import { Section, Container } from 'react-bulma-components';
 
+import { checkIfSolved } from '../actions/isSolved.js';
+import { updateCellValue } from '../actions/puzzle.js';
+import PuzzleGrid from '../components/PuzzleGrid';
 import DifficultyContainer from './DifficultyContainer';
 import NewGameContainer from './NewGameContainer';
 import NumberContainer from './NumberContainer';
-import PuzzleGrid from '../components/PuzzleGrid';
-import { checkIfSolved } from '../actions/isSolved.js';
-import { updateCellValue } from '../actions/puzzle.js';
 
 class PuzzleContainer extends Component {
-  state = {
-    showModal: true
-  }
 
   componentDidUpdate(prevProps) {
     if (prevProps.puzzle !== this.props.puzzle) {
@@ -43,24 +40,10 @@ class PuzzleContainer extends Component {
       this.props.updateCellValue(rowindex, id, value)
     }
   }
-
-  handleOnClose = () => {
-    this.setState({
-      showModal: false
-    })
-  }
   
   render() {
     return (
       <Section id='PuzzleSection'>
-        {/* if puzzle is solved */}
-        {this.props.isSolved && 
-          <Modal show={this.state.showModal} onClose={this.handleOnClose}>
-            <Modal.Content className="notification is-success has-text-centered has-text-white">
-              <Heading>Puzzle Solved!</Heading>
-            </Modal.Content>
-          </Modal>
-        }
         {/* if puzzle is generated */}
         {this.props.puzzle.length === 9 &&
           <Container id='PuzzleContainer'>
@@ -78,9 +61,8 @@ class PuzzleContainer extends Component {
   }
 }
 
-const mapStateToProps = ({ isSolved, puzzle, selectedNumber, solution }) => {
+const mapStateToProps = ({ puzzle, selectedNumber, solution }) => {
   return {
-    isSolved,
     puzzle,
     selectedNumber,
     solution
