@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, withRouter } from 'react-router-dom';
+import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 
 import './App.css';
 import { getCurrentUser } from './actions/currentUser.js';
@@ -8,7 +8,6 @@ import Login from './components/Login.js';
 import NavBar from './components/NavBar.js';
 import Signup from './components/Signup.js';
 import Welcome from './components/Welcome.js';
-import DifficultyContainer from './containers/DifficultyContainer.js';
 import Logout from './components/Logout.js';
 import PuzzleContainer from './containers/PuzzleContainer';
 import ModalContainer from './containers/ModalContainer';
@@ -21,13 +20,24 @@ class App extends Component {
 
   render() {
     const { loggedIn, displayModal } = this.props
+
     return (
-      <div className="App">
+      <div className='App'>
         <NavBar />
-        <Route exact path='/' render={() => loggedIn ? <DifficultyContainer /> : <Welcome />}/>
-        <Route exact path='/login' component={Login}/>
-        <Route exact path='/signup' component={Signup}/>
-        <Route exact path='/puzzle' component={PuzzleContainer}/>
+        <Switch>
+          <Route exact path='/'>
+            {loggedIn ? <Redirect to='/puzzle' /> : <Welcome />}
+          </Route>
+          <Route exact path='/login'>
+            {loggedIn ? <Redirect to='/puzzle' /> : <Login />}
+            </Route>
+          <Route exact path='/signup'>
+            {loggedIn ? <Redirect to='/puzzle' /> : <Signup />}
+          </Route>
+          <Route exact path='/puzzle'>
+            {loggedIn ? <PuzzleContainer /> : <Redirect to='/' />}
+          </Route>
+        </Switch>
         {loggedIn && <Logout />}
         {displayModal.show && <ModalContainer />}
       </div>
