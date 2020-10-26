@@ -10,7 +10,7 @@ import { clearPuzzle } from '../actions/puzzle.js';
 import { clearPuzzleRaw } from '../actions/puzzleRaw.js';
 import { clearSelectedNumber } from '../actions/selectedNumber.js';
 import { clearSolution } from '../actions/solution.js';
-import { logout } from '../actions/currentUser.js'
+import { logout } from '../actions/currentUser.js';
 import ButtonFullWidth from './ButtonFullWidth.js';
 
 const Logout = ({ clearDifficulty,  clearPuzzle, clearPuzzleRaw, clearSelectedNumber, clearSolution, logout }) => {
