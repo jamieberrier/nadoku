@@ -13,31 +13,31 @@
   }*/
 }
 
-.App-header {
+/*.App-header {
   background-color: #282c34;
   padding: 1rem;
-  /*min-height: 100vh;*/
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  /*margin-bottom: 2rem;*/
+  margin-bottom: 2rem;
 }
 
-/*.PuzzleContainer {
+.PuzzleContainer {
   display: flex;
   min-height: 100vh;
   align-items: center;
   justify-content: center;
-}
+}*/
 
 .PuzzleGrid {
-  min-height: 100vh;
+  /*min-height: 100vh;*/
   align-items: center;
   justify-content: center;
-}*/
+}
 
 .cell {
   width: 3rem;
@@ -82,8 +82,29 @@
   }
 }*/
 
-/* Extra small devices (phones, 600px and down) */
+/* 550 breakpoint for difficultycontainer */
+
+/* Extra small devices (phones, 500px and down) */
 @media only screen and (max-width: 500px) {
+  .cell {
+    width: 2.75rem;
+    height: 2.75rem;
+    font-size: 1.75rem;
+    text-align: center;
+    color: black;
+    border: 1px solid black;
+  }
+
+  .rightborder {
+    border-right: 4px solid black;
+  }
+  
+  .bottomborder {
+    border-bottom: 4px solid black;
+  }
+}
+
+@media only screen and (max-width: 443px) {
   .cell {
     width: 2.5rem;
     height: 2.5rem;
@@ -94,48 +115,69 @@
   }
 
   .rightborder {
-    border-right: 4px solid black;
+    border-right: 3px solid black;
   }
   
   .bottomborder {
-    border-bottom: 4px solid black;
+    border-bottom: 3px solid black;
   }
 }
 
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 407px) {
+  .cell {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 1.25rem;
+    text-align: center;
+    color: black;
+    border: 1px solid black;
+  }
+
+  .rightborder {
+    border-right: 3px solid black;
+  }
+  
+  .bottomborder {
+    border-bottom: 3px solid black;
+  }
+}
+
+@media only screen and (max-width: 371px) {
   .cell {
     width: 2rem;
     height: 2rem;
-    font-size: 1rem;
+    font-size: 1.25rem;
     text-align: center;
     color: black;
     border: 1px solid black;
   }
 
   .rightborder {
-    border-right: 4px solid black;
+    border-right: 2.75px solid black;
   }
   
   .bottomborder {
-    border-bottom: 4px solid black;
+    border-bottom: 2.75px solid black;
   }
 }
 
-@media only screen and (max-width: 350px) {
+/* 350 breakpoint for numberpad */
+
+@media only screen and (max-width: 335px) {
   .cell {
     width: 1.75rem;
     height: 1.75rem;
-    font-size: 1rem;
+    font-size: 1.25rem;
     text-align: center;
     color: black;
     border: 1px solid black;
   }
 
   .rightborder {
-    border-right: 4px solid black;
+    border-right: 2.75px solid black;
   }
   
   .bottomborder {
-    border-bottom: 4px solid black;
+    border-bottom: 2.75px solid black;
   }
 }
