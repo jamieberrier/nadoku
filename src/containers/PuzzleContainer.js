@@ -8,7 +8,6 @@ import { checkIfSolved } from '../actions/isSolved.js';
 import { updateCellValue } from '../actions/puzzle.js';
 import PuzzleGrid from '../components/PuzzleGrid';
 import DifficultyContainer from './DifficultyContainer';
-import NewGameContainer from './NewGameContainer';
 import NumberContainer from './NumberContainer';
 
 class PuzzleContainer extends Component {
@@ -49,7 +48,6 @@ class PuzzleContainer extends Component {
           <Container id='PuzzleContainer'>
             <PuzzleGrid puzzle={this.props.puzzle} handleOnChange={this.handleOnChange} handleOnClick={this.handleOnClick} />
             <NumberContainer />
-            <NewGameContainer />
           </Container>
         }
         {/* if no puzzle is generated */}
@@ -61,8 +59,9 @@ class PuzzleContainer extends Component {
   }
 }
 
-const mapStateToProps = ({ puzzle, selectedNumber, solution }) => {
+const mapStateToProps = ({ difficulty, puzzle, selectedNumber, solution }) => {
   return {
+    difficulty,
     puzzle,
     selectedNumber,
     solution
