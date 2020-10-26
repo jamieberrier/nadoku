@@ -8,7 +8,6 @@ import Login from './components/Login.js';
 import NavBar from './components/NavBar.js';
 import Signup from './components/Signup.js';
 import Welcome from './components/Welcome.js';
-import Logout from './components/Logout.js';
 import PuzzleContainer from './containers/PuzzleContainer';
 import ModalContainer from './containers/ModalContainer';
 
@@ -38,7 +37,6 @@ class App extends Component {
             {loggedIn ? <PuzzleContainer /> : <Redirect to='/' />}
           </Route>
         </Switch>
-        {loggedIn && <Logout />}
         {displayModal.show && <ModalContainer />}
       </div>
     );
