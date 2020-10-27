@@ -17,17 +17,19 @@ const OptionsContainer = ({ difficulty, generatePuzzle }) => {
 
   return(
     <>
-      <SoundContainer />
       <DifficultyContainer />
-      <Section>
-        <Link to='/puzzle'>
-          <ButtonFullWidth 
-            color={'success'} 
-            text={'Start Puzzle'} 
-            handleOnClick={handleOnClick} 
-          />
-        </Link>
-      </Section>
+      <SoundContainer />
+      {difficulty &&
+        <Section>
+          <Link to='/puzzle'>
+            <ButtonFullWidth 
+              color={'success'} 
+              text={'Start Puzzle'} 
+              handleOnClick={handleOnClick} 
+            />
+          </Link>
+        </Section>
+      }
     </>
   )
 }
