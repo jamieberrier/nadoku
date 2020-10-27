@@ -7,15 +7,13 @@ import { Navbar, Heading } from 'react-bulma-components';
 import { clearDifficulty } from '../actions/difficulty.js';
 import { clearIsSolved } from '../actions/isSolved.js';
 import { clearPuzzle } from '../actions/puzzle.js';
-import { clearPuzzleRaw } from '../actions/puzzleRaw.js';
 import { clearSelectedNumber } from '../actions/selectedNumber.js';
 import { clearSolution } from '../actions/solution.js';
 import { logout } from '../actions/currentUser.js';
 
-const NavBar = ({ difficulty, loggedIn, clearDifficulty, clearIsSolved, clearPuzzle, clearPuzzleRaw, clearSelectedNumber, clearSolution, logout }) => {
+const NavBar = ({ difficulty, loggedIn, solution, clearDifficulty, clearIsSolved, clearPuzzle, clearPuzzleRaw, clearSelectedNumber, clearSolution, logout }) => {
   const handleOnClick = event => {
     clearDifficulty()
-    clearPuzzleRaw()
     clearSolution()
     clearPuzzle()
     clearSelectedNumber()
@@ -37,7 +35,7 @@ const NavBar = ({ difficulty, loggedIn, clearDifficulty, clearIsSolved, clearPuz
             <Navbar.Item id='logout' renderAs='a' onClick={handleOnClick}>
               Log Out
             </Navbar.Item>
-            {difficulty &&
+            {solution &&
               <>
                 <Navbar.Item></Navbar.Item>
                 <Navbar.Item></Navbar.Item>
@@ -58,11 +56,12 @@ const NavBar = ({ difficulty, loggedIn, clearDifficulty, clearIsSolved, clearPuz
   )
 }
 
-const mapStateToProps = ({ currentUser, difficulty }) => {
+const mapStateToProps = ({ currentUser, difficulty, solution }) => {
   return {
     loggedIn: !!currentUser,
-    difficulty
+    difficulty,
+    solution
   }
 }
 
-export default connect(mapStateToProps, { clearDifficulty, clearIsSolved, clearPuzzle, clearPuzzleRaw, clearSelectedNumber, clearSolution, logout })(NavBar);
+export default connect(mapStateToProps, { clearDifficulty, clearIsSolved, clearPuzzle, clearSelectedNumber, clearSolution, logout })(NavBar);
