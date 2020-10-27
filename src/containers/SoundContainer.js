@@ -51,14 +51,14 @@ class SoundContainer extends Component {
   render() {
     return(
       <Section>
-      <Container id='SoundContainer'>
-        <Heading subtitle className='has-text-info'>Choose Nature Sound</Heading>
-        <Radio name={'sound'} value={'ocean'} checked={this.state.selected === 'ocean'} onChange={this.handleOnChange}> Ocean</Radio>
-        <Radio name={'sound'} value={'rainForest'} checked={this.state.selected === 'rainForest'} onChange={this.handleOnChange}> Rain Forest</Radio>
-        <Radio name={'sound'} value={'water'} checked={this.state.selected === 'water'} onChange={this.handleOnChange}> Water</Radio>
-        <Radio name={'sound'} value={'forest'} checked={this.state.selected === 'forest'} onChange={this.handleOnChange}> Forest</Radio>
-        <Radio name={'sound'} value={'rain'} checked={this.state.selected === 'rain'} onChange={this.handleOnChange}> Rain</Radio>
-      </Container>
+        <Container id='SoundContainer'>
+          <Heading subtitle className='has-text-info'>Choose Nature Sound</Heading>
+          <Radio name={'sound'} value={'ocean'} checked={this.state.selected === 'ocean'} onChange={this.handleOnChange}> Ocean</Radio>
+          <Radio name={'sound'} value={'rainForest'} checked={this.state.selected === 'rainForest'} onChange={this.handleOnChange}> Rain Forest</Radio>
+          <Radio name={'sound'} value={'water'} checked={this.state.selected === 'water'} onChange={this.handleOnChange}> Water</Radio>
+          <Radio name={'sound'} value={'forest'} checked={this.state.selected === 'forest'} onChange={this.handleOnChange}> Forest</Radio>
+          <Radio name={'sound'} value={'rain'} checked={this.state.selected === 'rain'} onChange={this.handleOnChange}> Rain</Radio>
+        </Container>
       </Section>
     )
   }
