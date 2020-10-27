@@ -33,10 +33,26 @@
   justify-content: center;
 }*/
 
+#difficulty.navbar-item {
+  cursor: auto;
+}
+
 .PuzzleGrid {
   /*min-height: 100vh;*/
   align-items: center;
   justify-content: center;
+}
+
+#PuzzleGridSection {
+  padding: 12px;
+}
+
+#PuzzleSection {
+  padding: 12px;
+}
+
+#NumberPad {
+  margin: 0px;
 }
 
 .cell {
@@ -85,7 +101,7 @@
 /* 550 breakpoint for difficultycontainer */
 
 /* Extra small devices (phones, 500px and down) */
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 496px) {
   .cell {
     width: 2.75rem;
     height: 2.75rem;
@@ -108,18 +124,18 @@
   .cell {
     width: 2.5rem;
     height: 2.5rem;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     text-align: center;
     color: black;
     border: 1px solid black;
   }
 
   .rightborder {
-    border-right: 3px solid black;
+    border-right: 4px solid black;
   }
   
   .bottomborder {
-    border-bottom: 3px solid black;
+    border-bottom: 4px solid black;
   }
 }
 
@@ -127,7 +143,7 @@
   .cell {
     width: 2.25rem;
     height: 2.25rem;
-    font-size: 1.25rem;
+    font-size: 1.75rem;
     text-align: center;
     color: black;
     border: 1px solid black;
@@ -144,9 +160,28 @@
 
 @media only screen and (max-width: 371px) {
   .cell {
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 1.7rem;
+    text-align: center;
+    color: black;
+    border: 1px solid black;
+  }
+
+  .rightborder {
+    border-right: 3px solid black;
+  }
+  
+  .bottomborder {
+    border-bottom: 3px solid black;
+  }
+}
+
+@media only screen and (max-width: 364px) {
+  .cell {
     width: 2rem;
     height: 2rem;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     text-align: center;
     color: black;
     border: 1px solid black;
@@ -160,8 +195,6 @@
     border-bottom: 2.75px solid black;
   }
 }
-
-/* 350 breakpoint for numberpad */
 
 @media only screen and (max-width: 335px) {
   .cell {
@@ -181,3 +214,5 @@
     border-bottom: 2.75px solid black;
   }
 }
+
+/* 350 breakpoint for numberpad */

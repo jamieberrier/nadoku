@@ -51,7 +51,7 @@
 - [x] check if puzzle solved
 - [x] style sign up form
 - [x] add cancel button to sign up and log in forms
-- [ ] display puzzle level during game
+- [x] display puzzle level during game
 - [x] change logged out alert to modal
 - [x] add username field to backend
 - [x] add username field to signup form
@@ -59,7 +59,9 @@
 - [x] stylize validation error messages (sign up and log in)
 - [x] route protection / authenticate route
 - stop clearing puzzle/difficulty on refresh
-- add spotify
+- [x] add spotify
+- [ ] disable 'start puzzle' button unless sound and difficulty selected
+- [ ] change number on number pad when all 9 instances entered
 
 ### Stretch Goals
 
