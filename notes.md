@@ -6,6 +6,7 @@
 [x] Your app should have one HTML page to render your react-redux application
 [x] There should be 2 container components
   - DifficultyContainer
+  - SoundContainer
   - PuzzleContainer
 [x] There should be 5 stateless components
   - ButtonFullWidth
@@ -14,10 +15,11 @@
   - PuzzleGrid
   - Signup
   - Welcome
-  - LoginContainer
-  - LogoutContainer
+  - Login
+  - Logout
   - NewGameContainer
   - NumberContainer
+  - OptionsContainer
 [x] There should be 3 routes
   - /signup
   - /login
