@@ -44,7 +44,7 @@
 - [x] User Sign Up
 - [x] User Log in
 - [x] User Authentication
-- [ ] Nav Bar
+- [x] Nav Bar
 - [x] React Router
 - [x] Render a different puzzle
 - [x] generate solution
@@ -62,8 +62,8 @@
 - [x] route protection / authenticate route
 - stop clearing puzzle/difficulty on refresh
 - [x] add spotify
-- [ ] disable 'start puzzle' button unless sound and difficulty selected
-- [ ] change number on number pad when all 9 instances entered
+- [x] disable 'start puzzle' button unless sound and difficulty selected
+- [ ] change button color on number pad when all 9 instances entered
 
 ### Stretch Goals
 
