@@ -7,7 +7,6 @@ import displayModal from './reducers/displayModal.js';
 import isSolved from './reducers/isSolved.js';
 import loginForm from './reducers/loginForm.js';
 import puzzle from './reducers/puzzle.js';
-import puzzleRaw from './reducers/puzzleRaw.js';
 import selectedNumber from './reducers/selectedNumber.js';
 import signupForm from './reducers/signupForm.js';
 import solution from './reducers/solution.js';
@@ -20,7 +19,6 @@ const reducer = combineReducers({
   isSolved,
   loginForm,
   puzzle,
-  puzzleRaw,
   selectedNumber,
   signupForm,
   solution,
