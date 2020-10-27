@@ -3,22 +3,23 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import 'react-bulma-components/dist/react-bulma-components.min.css';
-import { Section, Container, Form } from 'react-bulma-components';
+import { Section, Container, Form, Heading } from 'react-bulma-components';
 
 import { setDifficulty } from '../actions/difficulty';
 import { generateRawPuzzle } from '../actions/puzzleRaw.js';
 import { generatePuzzle } from '../actions/puzzle.js';
 import { generateSolution } from '../actions/solution.js';
 import ButtonFullWidth from '../components/ButtonFullWidth';
+import SoundContainer from './SoundContainer.js';
 
 const { Radio } = Form;
 
 class DifficultyContainer extends Component {
   state = {
-    selected: undefined
+    selected: null
   }
 
-  handleOnChange = (event) => {
+  handleOnChange = event => {
     this.setState({
       selected: event.target.value,
     })
@@ -34,23 +35,27 @@ class DifficultyContainer extends Component {
 
   render() {
     return (
-      <Section id='DifficultySection'>
+      <>
+        <SoundContainer />
         <Container id='DifficultyContainer'>
+          <Heading subtitle className='has-text-info'>Choose Puzzle Difficulty</Heading>
           <Radio name={'difficulty'} value={'easy'} checked={this.state.selected === 'easy'} onChange={this.handleOnChange}> Easy</Radio>
           <Radio name={'difficulty'} value={'medium'} checked={this.state.selected === 'medium'} onChange={this.handleOnChange}> Medium</Radio>
           <Radio name={'difficulty'} value={'hard'} checked={this.state.selected === 'hard'} onChange={this.handleOnChange}> Hard</Radio>
           <Radio name={'difficulty'} value={'very-hard'} checked={this.state.selected === 'very-hard'} onChange={this.handleOnChange}> Very Hard</Radio>
           <Radio name={'difficulty'} value={'insane'} checked={this.state.selected === 'insane'} onChange={this.handleOnChange}> Insane</Radio>
           <Radio name={'difficulty'} value={'inhuman'} checked={this.state.selected === 'inhuman'} onChange={this.handleOnChange}> Inhuman</Radio>
+        </Container>
+        <Section>
           <Link to='/puzzle'>
             <ButtonFullWidth 
-              color={'dark'} 
+              color={'success'} 
               text={'Start Puzzle'} 
               handleOnClick={this.handleOnClick} 
             />
           </Link>
-        </Container>
-      </Section>
+        </Section>
+      </>
     )
   }
 }
