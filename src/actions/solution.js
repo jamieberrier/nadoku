@@ -16,7 +16,7 @@ export const clearSolution = () => {
   }
 }
 
-export const generateSolution = ({ puzzleString }) => {
+export const generateSolution = puzzleString => {
   return dispatch => {
     const solution = sudoku.solver.solve(puzzleString)
     return dispatch(setSolution(solution))
