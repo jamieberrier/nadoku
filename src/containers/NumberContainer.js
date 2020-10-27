@@ -1,20 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 import 'react-bulma-components/dist/react-bulma-components.min.css';
-import { Section } from 'react-bulma-components';
 
 import NumberPad from '../components/NumberPad';
 import { setSelectedNumber } from '../actions/selectedNumber.js';
 import { highlightCells, setCellClass } from '../actions/puzzle.js';
 
-class NumberContainer extends Component {
+const NumberContainer = ({ highlightCells, setSelectedNumber }) => {
 
-  handleOnClick = event => {
+  const handleOnClick = event => {
     const number = event.target.value
-    this.props.setSelectedNumber(number)
+    setSelectedNumber(number)
 
-    const rows = document.querySelector('#PuzzleGrid').children
+    const rows = document.querySelector('#PuzzleGridContainer').children
     
     for (let i = 0; i < rows.length; i++) {
       const row = rows[i];
@@ -26,16 +25,12 @@ class NumberContainer extends Component {
       }
     }
     
-    this.props.highlightCells(number)
+    highlightCells(number)
   }
 
-  render() {
-    return (
-      <Section id='NumberSection'>
-        <NumberPad handleOnClick={this.handleOnClick} />
-      </Section>
-    )
-  }
+  return (
+    <NumberPad handleOnClick={handleOnClick} />
+  )
 }
 
 export default connect(null, ({ setSelectedNumber, highlightCells }))(NumberContainer);

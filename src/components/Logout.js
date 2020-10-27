@@ -7,17 +7,15 @@ import { Section, Container } from 'react-bulma-components';
 
 import { clearDifficulty } from '../actions/difficulty.js';
 import { clearPuzzle } from '../actions/puzzle.js';
-import { clearPuzzleRaw } from '../actions/puzzleRaw.js';
 import { clearSelectedNumber } from '../actions/selectedNumber.js';
 import { clearSolution } from '../actions/solution.js';
 import { logout } from '../actions/currentUser.js';
 import ButtonFullWidth from './ButtonFullWidth.js';
 
-const Logout = ({ clearDifficulty,  clearPuzzle, clearPuzzleRaw, clearSelectedNumber, clearSolution, logout }) => {
+const Logout = ({ clearDifficulty,  clearPuzzle, clearSelectedNumber, clearSolution, logout }) => {
 
   const handleOnClick = () => {
     clearDifficulty()
-    clearPuzzleRaw()
     clearSolution()
     clearPuzzle()
     clearSelectedNumber()
@@ -35,4 +33,4 @@ const Logout = ({ clearDifficulty,  clearPuzzle, clearPuzzleRaw, clearSelectedNu
   )
 }
 
-export default connect(null, { clearDifficulty,  clearPuzzle, clearPuzzleRaw, clearSelectedNumber, clearSolution, logout })(Logout);
+export default connect(null, { clearDifficulty,  clearPuzzle, clearSelectedNumber, clearSolution, logout })(Logout);

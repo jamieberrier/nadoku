@@ -6,9 +6,10 @@ import { Section, Container } from 'react-bulma-components';
 
 import { checkIfSolved } from '../actions/isSolved.js';
 import { updateCellValue } from '../actions/puzzle.js';
-import PuzzleGrid from '../components/PuzzleGrid';
-import DifficultyContainer from './DifficultyContainer';
-import NumberContainer from './NumberContainer';
+import PuzzleGrid from '../components/PuzzleGrid.js';
+import OptionsContainer from './OptionsContainer.js';
+import NumberContainer from './NumberContainer.js';
+import PlayerContainer from './PlayerContainer.js';
 
 class PuzzleContainer extends Component {
 
@@ -46,13 +47,14 @@ class PuzzleContainer extends Component {
         {/* if puzzle is generated */}
         {this.props.puzzle.length === 9 &&
           <Container id='PuzzleContainer'>
+            <PlayerContainer />
             <PuzzleGrid puzzle={this.props.puzzle} handleOnChange={this.handleOnChange} handleOnClick={this.handleOnClick} />
             <NumberContainer />
           </Container>
         }
         {/* if no puzzle is generated */}
         {this.props.puzzle.length === 0 &&
-          <DifficultyContainer />
+          <OptionsContainer />
         }
       </Section>
     )

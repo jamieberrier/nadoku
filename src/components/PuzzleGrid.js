@@ -1,7 +1,7 @@
 import React from 'react';
 
 import 'react-bulma-components/dist/react-bulma-components.min.css';
-import { Container } from 'react-bulma-components';
+import { Container, Section } from 'react-bulma-components';
 
 const PuzzleGrid = ({ puzzle, handleOnChange, handleOnClick }) => {
 
@@ -17,7 +17,6 @@ const PuzzleGrid = ({ puzzle, handleOnChange, handleOnClick }) => {
           readOnly={cell.readOnly}
           data-rowindex={index}
           value={cell.value}
-          //defaultValue={cell.value}
           disabled={cell.disabled}
           type='tel'
         />
@@ -26,9 +25,11 @@ const PuzzleGrid = ({ puzzle, handleOnChange, handleOnClick }) => {
   )
       
   return (
-    <Container id='PuzzleGrid' className='PuzzleGrid'>
-      {cells}
-    </Container>
+    <Section id='PuzzleGridSection'>
+      <Container id='PuzzleGridContainer' className='PuzzleGrid'>
+        {cells}
+      </Container>
+    </Section>
   )
 }
 

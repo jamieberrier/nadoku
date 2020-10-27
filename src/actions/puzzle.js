@@ -1,5 +1,7 @@
 import SudokuToolCollection from 'sudokutoolcollection';
 
+import { generateSolution } from './solution.js';
+
 const sudoku = SudokuToolCollection()
 
 // syncronous action creators
@@ -45,8 +47,9 @@ export const setCellClass = coordinates => {
   }
 }
 
-export const generatePuzzle = ({ puzzleString }) => {
+export const generatePuzzle = level => {
   return dispatch => {
+    const puzzleString = sudoku.generator.generate(level)
     const puzzleObject = sudoku.conversions.stringToObject(puzzleString)
     const rows = []
     const cells = Object.entries(puzzleObject).map(i => {
@@ -65,6 +68,7 @@ export const generatePuzzle = ({ puzzleString }) => {
       rows.push(row)
     }
 
+    dispatch(generateSolution(puzzleString))
     return dispatch(setPuzzle(rows))
   }
 }

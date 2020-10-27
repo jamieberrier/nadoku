@@ -1,22 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 import { hideModal } from '../actions/displayModal';
 import DisplayModal from '../components/DisplayModal';
 
-class ModalContainer extends Component {
+const ModalContainer  = ({ displayModal, hideModal }) => {
 
-  handleOnClose = () => {
-    this.props.hideModal()
+  const handleOnClose = () => {
+    hideModal()
   }
 
-  render() {
-    const { displayModal } = this.props
-
-    return (
-      <DisplayModal show={displayModal.show} color={displayModal.color} content={displayModal.content} handleOnClose={this.handleOnClose} />
-    )
-  }
+  return (
+    <DisplayModal show={displayModal.show} color={displayModal.color} content={displayModal.content} handleOnClose={handleOnClose} />
+  )
 }
 
 const mapStateToProps = ({ displayModal }) => {
