@@ -10,6 +10,7 @@ import Signup from './components/Signup.js';
 import Welcome from './components/Welcome.js';
 import PuzzleContainer from './containers/PuzzleContainer';
 import ModalContainer from './containers/ModalContainer';
+import OptionsContainer from './containers/OptionsContainer';
 
 class App extends Component {
 
@@ -19,19 +20,22 @@ class App extends Component {
 
   render() {
     const { loggedIn, displayModal } = this.props
-
+    
     return (
       <div className='App'>
         <NavBar />
         <Switch>
           <Route exact path='/'>
-            {loggedIn ? <Redirect to='/puzzle' /> : <Welcome />}
+            {loggedIn ? <Redirect to='/options' /> : <Welcome />}
           </Route>
           <Route exact path='/login'>
-            {loggedIn ? <Redirect to='/puzzle' /> : <Login />}
-            </Route>
+            {loggedIn ? <Redirect to='/options' /> : <Login />}
+          </Route>
           <Route exact path='/signup'>
-            {loggedIn ? <Redirect to='/puzzle' /> : <Signup />}
+            {loggedIn ? <Redirect to='/options' /> : <Signup />}
+          </Route>
+          <Route exact path='/options'>
+            {loggedIn ? <OptionsContainer /> : <Redirect to='/' />}
           </Route>
           <Route exact path='/puzzle'>
             {loggedIn ? <PuzzleContainer /> : <Redirect to='/' />}
