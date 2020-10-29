@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import 'react-bulma-components/dist/react-bulma-components.min.css';
-import { Section } from 'react-bulma-components';
+import { Box, Section } from 'react-bulma-components';
 
 import { generatePuzzle } from '../actions/puzzle.js';
 import ButtonFullWidth from '../components/ButtonFullWidth';
@@ -16,7 +16,7 @@ const OptionsContainer = ({ difficulty, generatePuzzle }) => {
   }
 
   return(
-    <>
+    <Box>
       <DifficultyContainer />
       <SoundContainer />
       {difficulty &&
@@ -30,7 +30,7 @@ const OptionsContainer = ({ difficulty, generatePuzzle }) => {
           </Link>
         </Section>
       }
-    </>
+    </Box>
   )
 }
 
