@@ -6,7 +6,7 @@ import { Button, Container } from 'react-bulma-components';
 const NumberPad = ({ handleOnClick }) => {
 
   return (
-    <Container id='NumberPadContainer'>      
+    <Container id='NumberPadContainer'>
       <Button.Group position={'centered'} size={'medium'} id='NumberPad'>
         <Button color={'success'} rounded={true} onClick={handleOnClick} value='1'>1</Button>
         <Button color={'success'} rounded={true} onClick={handleOnClick} value='2'>2</Button>
