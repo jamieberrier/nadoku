@@ -51,7 +51,7 @@ class SoundContainer extends Component {
   render() {
     return(
       <Container id='SoundContainer'>
-        <Heading subtitle className='has-text-info'>Choose Nature Sound</Heading>
+        <Heading className='has-text-info'>Choose Nature Sound</Heading>
         <Radio name={'sound'} value={'ocean'} checked={this.state.selected === 'ocean'} onChange={this.handleOnChange}> Ocean</Radio>
         <Radio name={'sound'} value={'rainForest'} checked={this.state.selected === 'rainForest'} onChange={this.handleOnChange}> Rain Forest</Radio>
         <Radio name={'sound'} value={'water'} checked={this.state.selected === 'water'} onChange={this.handleOnChange}> Water</Radio>

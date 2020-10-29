@@ -24,7 +24,7 @@ class DifficultyContainer extends Component {
     return (
       <Section>
         <Container id='DifficultyContainer'>
-          <Heading subtitle className='has-text-info'>Choose Puzzle Difficulty</Heading>
+          <Heading className='has-text-info'>Choose Puzzle Difficulty</Heading>
           <Radio name={'difficulty'} value={'easy'} checked={this.state.selected === 'easy'} onChange={this.handleOnChange}> Easy</Radio>
           <Radio name={'difficulty'} value={'medium'} checked={this.state.selected === 'medium'} onChange={this.handleOnChange}> Medium</Radio>
           <Radio name={'difficulty'} value={'hard'} checked={this.state.selected === 'hard'} onChange={this.handleOnChange}> Hard</Radio>
