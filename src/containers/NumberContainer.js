@@ -8,12 +8,12 @@ import { setSelectedNumber } from '../actions/selectedNumber.js';
 import { highlightCells, setCellClass } from '../actions/puzzle.js';
 
 const NumberContainer = ({ highlightCells, setSelectedNumber }) => {
-
+  
   const handleOnClick = event => {
     const number = event.target.value
-    setSelectedNumber(number)
-
     const rows = document.querySelector('#PuzzleGridContainer').children
+    
+    setSelectedNumber(number)
     
     for (let i = 0; i < rows.length; i++) {
       const row = rows[i];
