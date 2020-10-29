@@ -21,9 +21,11 @@
   - NumberContainer
   - OptionsContainer
 [x] There should be 3 routes
+  - /
+    - welcome (log in or sign up)
   - /signup
   - /login
-  - /
+  - /options
     - select difficulty
     - select nature sounds
   - /puzzle
@@ -35,7 +37,7 @@
 [x] Your Rails API should handle the data persistence with a database. You should be using `fetch()` within your actions to GET and POST data from your API - do not use jQuery methods.
 [x] Your client-side application should handle the display of data with minimal data manipulation
 [x] Your application should have some minimal styling: feel free to stick to a framework (like react-bootstrap), but if you want to write (additional) CSS yourself, go for it!
-[ ] [Once your app is complete, fill out this checklist.](https://goo.gl/forms/ULtKsxuzWomvXuTk2)
+[x] [Once your app is complete, fill out this checklist.](https://goo.gl/forms/ULtKsxuzWomvXuTk2)
 
 ### To Do
 
@@ -60,13 +62,13 @@
 - [x] customize validation error messages
 - [x] stylize validation error messages (sign up and log in)
 - [x] route protection / authenticate route
-- stop clearing puzzle/difficulty on refresh
 - [x] add spotify
 - [x] disable 'start puzzle' button unless sound and difficulty selected
-- [ ] change button color on number pad when all 9 instances entered
+- [ ] NavBar breakpoints
 
 ### Stretch Goals
 
+- [ ] change button color on number pad when all 9 instances entered
 - [ ] Timer
 - [ ] Best Time
 - [ ] Save Game
