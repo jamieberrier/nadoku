@@ -45,7 +45,9 @@ export const signup = ({email, username, password, passwordConfirmation}, histor
       } else {
         dispatch(setCurrentUser(user.data.attributes))
         dispatch(resetSignupForm())
-        history.push('/')
+        if (history) {
+          history.push('/options')
+        }
       }
     })
     .catch(error => alert(error.message))

@@ -34,7 +34,9 @@ export const login = ({email, password}, history) => {
       } else {
         dispatch(setCurrentUser(user.data.attributes))
         dispatch(resetLoginForm())
-        history.push('/')
+        if (history) {
+          history.push('/options')
+        }
       }
     })
     .catch(console.log)
