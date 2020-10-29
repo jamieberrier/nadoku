@@ -1,46 +1,22 @@
 .App {
   text-align: center;
 }
-/*
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}*/
 
-@media (prefers-reduced-motion: no-preference) {
-  /*.App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }*/
-}
-
-/*.App-header {
-  background-color: #282c34;
+#header {
+  background-color: #33CC99;
   padding: 1rem;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  min-height: 10vh;
   font-size: calc(10px + 2vmin);
   color: white;
-  margin-bottom: 2rem;
+  margin-bottom: 0rem;
 }
 
-.PuzzleContainer {
-  display: flex;
-  min-height: 100vh;
-  align-items: center;
-  justify-content: center;
-}*/
-
-#difficulty.navbar-item {
-  cursor: auto;
+#logo{
+  color: white;
 }
 
-.PuzzleGrid {
-  /*min-height: 100vh;*/
-  align-items: center;
-  justify-content: center;
+#difficulty {
+  color: #333333;
 }
 
 #PuzzleGridSection {
@@ -83,22 +59,6 @@
 .bottomborder {
   border-bottom: 4px solid black;
 }
-
-/*
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}*/
-
-/* 550 breakpoint for difficultycontainer */
 
 /* Extra small devices (phones, 500px and down) */
 @media only screen and (max-width: 496px) {
