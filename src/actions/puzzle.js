@@ -28,10 +28,9 @@ export const highlightCells = value => {
   }
 }
 
-export const clearPuzzle = puzzle => {
+export const clearPuzzle = () => {
   return {
-    type: 'CLEAR_PUZZLE',
-    puzzle
+    type: 'CLEAR_PUZZLE'
   }
 }
 
