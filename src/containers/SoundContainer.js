@@ -41,6 +41,9 @@ class SoundContainer extends Component {
       case 'forest':
         selectedSound = FOREST
         break;
+      case 'none':
+        selectedSound = null
+        break;
       default:
         break;
     }
@@ -57,6 +60,7 @@ class SoundContainer extends Component {
         <Radio name={'sound'} value={'water'} checked={this.state.selected === 'water'} onChange={this.handleOnChange}> Water</Radio>
         <Radio name={'sound'} value={'forest'} checked={this.state.selected === 'forest'} onChange={this.handleOnChange}> Forest</Radio>
         <Radio name={'sound'} value={'rain'} checked={this.state.selected === 'rain'} onChange={this.handleOnChange}> Rain</Radio>
+        <Radio name={'sound'} value={'none'} checked={this.state.selected === 'none'} onChange={this.handleOnChange}> None</Radio>
       </Container>
     )
   }
