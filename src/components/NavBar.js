@@ -10,16 +10,18 @@ import { clearIsSolved } from '../actions/isSolved.js';
 import { clearPuzzle } from '../actions/puzzle.js';
 import { clearSelectedNumber } from '../actions/selectedNumber.js';
 import { clearSolution } from '../actions/solution.js';
+import { clearSound } from '../actions/sound.js';
 import { logout } from '../actions/currentUser.js';
 import PlayerContainer from '../containers/PlayerContainer.js';
 
-const NavBar = ({ name, difficulty, loggedIn, solution, clearDifficulty, clearIsSolved, clearPuzzle, clearSelectedNumber, clearSolution, logout }) => {
+const NavBar = ({ difficulty, loggedIn, name, solution, sound, clearDifficulty, clearIsSolved, clearPuzzle, clearSelectedNumber, clearSolution, clearSound, logout }) => {
   const handleOnClick = event => {
     clearDifficulty()
-    clearSolution()
+    clearIsSolved()
     clearPuzzle()
     clearSelectedNumber()
-    clearIsSolved()
+    clearSolution()
+    clearSound()
 
     if (event.target.id === 'logout') {
       logout()
@@ -30,7 +32,9 @@ const NavBar = ({ name, difficulty, loggedIn, solution, clearDifficulty, clearIs
       {!loggedIn && 
       <Level.Item position='centered'>
         <div>
-          <Heading id='logo'><i className='fas fa-leaf'></i> Nadoku</Heading>
+          <Heading id='logo'>
+            <i className='fas fa-leaf'></i> Nadoku
+          </Heading>
         </div>
       </Level.Item>
     }
@@ -39,23 +43,48 @@ const NavBar = ({ name, difficulty, loggedIn, solution, clearDifficulty, clearIs
         <div>
           <Heading heading>{name}</Heading>
           <Link to='/'>
-            <Button id='logout' color='dark' outlined={true} onClick={handleOnClick}>Log Out</Button>
+            <Button 
+              id='logout' 
+              color='dark' 
+              outlined={true} 
+              onClick={handleOnClick}
+            >
+              Log Out
+            </Button>
           </Link>
         </div>
       </Level.Item>
     }
     {solution && 
       <>
-      <Level.Item position='centered'>
-        <div>
-          <PlayerContainer />
-        </div>
-      </Level.Item>
+      {!sound &&
+        <Level.Item position='centered'>
+          <div>
+            <Heading id='logo'>
+              <i className='fas fa-leaf'></i> Nadoku
+            </Heading>
+          </div>
+        </Level.Item>
+      }
+      {sound && 
+        <Level.Item position='centered'>
+          <div>
+            <PlayerContainer />
+          </div>
+        </Level.Item>
+      }
       <Level.Item position='centered'>
         <div>
           <Heading heading id='difficulty'>{difficulty}</Heading>
           <Link to='/options'>
-            <Button id='new' color='white' outlined={true} onClick={handleOnClick}>New Game</Button>
+            <Button 
+              id='new' 
+              color='white' 
+              outlined={true} 
+              onClick={handleOnClick}
+            >
+              New Game
+            </Button>
           </Link>
         </div>
       </Level.Item>
@@ -65,21 +94,23 @@ const NavBar = ({ name, difficulty, loggedIn, solution, clearDifficulty, clearIs
   )
 }
 
-const mapStateToProps = ({ currentUser, difficulty, solution }) => {
+const mapStateToProps = ({ currentUser, difficulty, solution, sound }) => {
   if (currentUser) {
     return {
-      loggedIn: !!currentUser,
       difficulty,
+      loggedIn: !!currentUser,
       name: currentUser.username,
-      solution
+      solution,
+      sound
     }
   } else {
     return {
-      loggedIn: !!currentUser,
       difficulty,
-      solution
+      loggedIn: !!currentUser,
+      solution,
+      sound
     }
   }
 }
 
-export default connect(mapStateToProps, { clearDifficulty, clearIsSolved, clearPuzzle, clearSelectedNumber, clearSolution, logout })(NavBar);
+export default connect(mapStateToProps, { clearDifficulty, clearIsSolved, clearPuzzle, clearSelectedNumber, clearSolution, clearSound, logout })(NavBar);
