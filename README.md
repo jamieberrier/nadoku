@@ -11,6 +11,8 @@
 
 > A Sudoku game with relaxing nature sounds.
 
+*A Flatiron School React Redux Portfolio Project: created with react 16.13.1, react-redux 7.2.1, redux-thunk 2.3.0, react-router-dom 5.2.0, sudokutoolcollection 1.1.3, react-bulma-components 3.4.0, Ruby 2.6.1, Rails 6.0.3.4, and PostgreSQL 12.*
+
 ### 🏠 [Homepage](https://github.com/jamieberrier/nadoku)
 
 ### 💻 [Backend Repo](https://github.com/jamieberrier/nadoku-backend)
@@ -20,19 +22,13 @@
 ## Install
 
 ```sh
-npm install
+npm install or yarn add
 ```
 
 ## Usage
 
 ```sh
-npm start
-```
-
-## Run tests
-
-```sh
-npm run test
+npm start or yarn start
 ```
 
 ## Author
