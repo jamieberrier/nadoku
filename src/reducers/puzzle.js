@@ -3,12 +3,26 @@ export default (state = [], action) => {
     case "SET_PUZZLE":
       return state.concat(action.rows)
     case "UPDATE_CELL_VALUE":
-      // filter instead?
       const rowIndex = parseInt(action.rowindex)
       const cellRow = [...state[rowIndex]]
+      // column number
       const colNum = action.id.slice(-1)
+      // column index
+      const colIndex = colNum - 1
       let cellColumn = []
-
+      // uppermost row index of the square
+      let rowStart = rowIndex - (rowIndex % 3)
+      // leftmost column index of the square
+	    let colStart = colIndex - (colIndex % 3)
+      let cellSquare = []
+      // add cells in the square to cellSquare
+      for (let i = 0; i < 3; i++) {
+        cellSquare[i] = cellSquare[i] || []
+        for (let j = 0; j < 3; j++) {
+          cellSquare[i].push(state[rowStart + i][colStart + j])
+        }
+      }
+      // add cells in the column to cellColumn
       for (const row of [...state]) {
         for (const cell of row) {
           if (cell.coordinates.includes(colNum)) {
@@ -16,23 +30,21 @@ export default (state = [], action) => {
           }
         }
       }
-
+      // check for match(es) in row, column, and square
       const rowMatch = cellRow.some(cell => cell.value === action.value)
-      const columnMatch = cellColumn.some(cell => cell.value === action.value)
-
+      const colMatch = cellColumn.some(cell => cell.value === action.value)
+      const squareMatch = cellSquare.flat().some(cell => cell.value === action.value)
+      // create new row
       const newRow = cellRow.map(cell => {
         if (cell.coordinates === action.id) {
+          // if cell was previously a conflict
           if (cell.className.includes('conflict')) {
             const newClass = cell.className.split(' conflict').shift()
             return Object.assign({}, cell, {className: newClass, value: action.value})
-          } else if (rowMatch || columnMatch) {
-            if (action.value === "") {
-              return Object.assign({}, cell, {value: action.value})
-            }
+          } else if (rowMatch || colMatch || squareMatch) { // cell has a conflict
             const conflict = cell.className + ' conflict'
             return Object.assign({}, cell, {className: conflict, value: action.value})
-          } else {
-            // { coordinates: cell.coordinates, value: action.value, readOnly: cell.readOnly }
+          } else { // no conflicts
             return Object.assign({}, cell, {value: action.value})
           }
         }
