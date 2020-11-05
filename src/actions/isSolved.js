@@ -26,8 +26,10 @@ export const checkIfSolved = (puzzle, solution) => {
     
     if (cellValues.every(filled)) {
       if (cellValues.join('') === solution) {
-        dispatch(showModal('success', 'Puzzle Solved!'))
+        dispatch(showModal('success', 'You Solved The Puzzle!'))
         return dispatch(setIsSolved(true))
+      } else {
+        dispatch(showModal('info', 'The Puzzle Is Incorrect'))
       }
     }
     
