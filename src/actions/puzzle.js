@@ -56,7 +56,6 @@ export const generatePuzzle = level => {
       return {
         coordinates: i[0],
         value: value,
-        readOnly: value !== "",
         disabled: value !== "",
         className: setCellClass(i[0])
       }
