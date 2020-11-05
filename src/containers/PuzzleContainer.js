@@ -23,18 +23,18 @@ class PuzzleContainer extends Component {
     // using key pad
     if (this.props.selectedNumber) {
       this.props.updateCellValue(rowindex, id, this.props.selectedNumber)
-    }
+    } 
   }
 
+  // typing or deleting (key pad)
   handleOnChange = event => {
     const { id } = event.target
     let { value } = event.target
     const { rowindex } = event.target.dataset
     // if typing, validate input
     if (isNaN(value) || value < 1 || value > 9) {
-      //alert('Enter 0-9')
-      document.querySelector(`#${id}`).value = ""
-    } else {
+      this.props.updateCellValue(rowindex, id, "")
+    } else { // using key pad
       this.props.updateCellValue(rowindex, id, value)
     }
   }
@@ -42,13 +42,10 @@ class PuzzleContainer extends Component {
   render() {
     return (
       <Section id='PuzzleSection'>
-        {/* if puzzle is generated */}
-        {this.props.puzzle.length === 9 &&
-          <Container id='PuzzleContainer'>
-            <PuzzleGrid puzzle={this.props.puzzle} handleOnChange={this.handleOnChange} handleOnClick={this.handleOnClick} />
-            <NumberContainer />
-          </Container>
-        }
+        <Container id='PuzzleContainer'>
+          <PuzzleGrid puzzle={this.props.puzzle} handleOnChange={this.handleOnChange} handleOnClick={this.handleOnClick} />
+          <NumberContainer />
+        </Container>
       </Section>
     )
   }
