@@ -10,15 +10,14 @@ const PuzzleGrid = ({ puzzle, handleOnChange, handleOnClick }) => {
       {row.map(cell => {
         return <input
           className={cell.className}
+          data-rowindex={index}
+          disabled={cell.disabled}
           id={cell.coordinates}
           key={cell.coordinates}
           onChange={handleOnChange}
           onClick={handleOnClick}
-          readOnly={cell.readOnly}
-          data-rowindex={index}
-          value={cell.value}
-          disabled={cell.disabled}
           type='tel'
+          value={cell.value}
         />
       })}
     </div>
