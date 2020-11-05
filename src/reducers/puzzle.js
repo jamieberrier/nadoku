@@ -3,7 +3,7 @@ export default (state = [], action) => {
     case "SET_PUZZLE":
       return state.concat(action.rows)
     case "UPDATE_CELL_VALUE":
-      const rowIndex = parseInt(action.rowindex)
+      const rowIndex = parseInt(action.rowIndex)
       const cellRow = [...state[rowIndex]]
       // column number
       const colNum = action.id.slice(-1)
