@@ -22,7 +22,7 @@ class PuzzleContainer extends Component {
     const { rowindex } = event.target.dataset
     // using key pad
     if (this.props.selectedNumber) {
-      this.props.updateCellValue(rowindex, id, this.props.selectedNumber)
+      this.props.updateCellValue({rowIndex: rowindex, id: id, value: this.props.selectedNumber})
     } 
   }
 
@@ -33,9 +33,9 @@ class PuzzleContainer extends Component {
     const { rowindex } = event.target.dataset
     // if typing, validate input
     if (isNaN(value) || value < 1 || value > 9) {
-      this.props.updateCellValue(rowindex, id, "")
+      this.props.updateCellValue({rowIndex: rowindex, id: id, value: ""})
     } else { // using key pad
-      this.props.updateCellValue(rowindex, id, value)
+      this.props.updateCellValue({rowIndex: rowindex, id: id, value: value})
     }
   }
   
