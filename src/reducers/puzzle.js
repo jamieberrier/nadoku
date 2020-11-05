@@ -1,17 +1,3 @@
-/*
-<input
-  className={setCellClass(cell.coordinates)}
-  id={cell.coordinates}
-  key={cell.coordinates}
-  onChange={handleOnChange}
-  onClick={handleOnClick}
-  readOnly={cell.readOnly}
-  data-rowindex={index}
-  value={value} 
-  color={}
-/>
-*/
-
 export default (state = [], action) => {
   switch (action.type) {
     case "SET_PUZZLE":
@@ -36,12 +22,15 @@ export default (state = [], action) => {
 
       const newRow = cellRow.map(cell => {
         if (cell.coordinates === action.id) {
-          if (rowMatch || columnMatch) {
-            const conflict = cell.className + ' conflict'
-            return Object.assign({}, cell, {className: conflict, value: action.value})
-          } else if (cell.className.includes('conflict')) {
+          if (cell.className.includes('conflict')) {
             const newClass = cell.className.split(' conflict').shift()
             return Object.assign({}, cell, {className: newClass, value: action.value})
+          } else if (rowMatch || columnMatch) {
+            if (action.value === "") {
+              return Object.assign({}, cell, {value: action.value})
+            }
+            const conflict = cell.className + ' conflict'
+            return Object.assign({}, cell, {className: conflict, value: action.value})
           } else {
             // { coordinates: cell.coordinates, value: action.value, readOnly: cell.readOnly }
             return Object.assign({}, cell, {value: action.value})
