@@ -13,7 +13,7 @@ const DisplayModal = ({ color, content, show = false, handleOnClose }) => {
     // create <p> for each error
     message = content.map((message, index) => <p key={index}>{message}</p>)
   } else if (color === 'success') {
-    message = <Heading>Puzzle Solved!</Heading>
+  message = <Heading subtitle>{content}</Heading>
   }
   else {
     message = <p>{content}</p>
