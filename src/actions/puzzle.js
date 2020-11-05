@@ -54,10 +54,10 @@ export const generatePuzzle = level => {
     const cells = Object.entries(puzzleObject).map(i => {
       const value = i[1] !== "." ? i[1] : ""
       return {
+        className: setCellClass(i[0]),
         coordinates: i[0],
-        value: value,
         disabled: value !== "",
-        className: setCellClass(i[0])
+        value: value
       }
     })
     
