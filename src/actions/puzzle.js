@@ -12,10 +12,10 @@ export const setPuzzle = rows => {
   }
 }
 
-export const updateCellValue = (rowindex, id, value) => {
+export const updateCellValue = ({ rowIndex, id, value }) => {
   return {
     type: 'UPDATE_CELL_VALUE',
-    rowindex,
+    rowIndex,
     id,
     value
   }
