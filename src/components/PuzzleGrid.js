@@ -3,7 +3,7 @@ import React from 'react';
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Container, Section } from 'react-bulma-components';
 
-const PuzzleGrid = ({ puzzle, handleOnChange, handleOnClick }) => {
+const PuzzleGrid = ({ puzzle, handleOnClick, handleOnKeyDown }) => {
 
   const cells = puzzle.map((row, index) => 
     <div className="row" key={index}>
@@ -14,8 +14,9 @@ const PuzzleGrid = ({ puzzle, handleOnChange, handleOnClick }) => {
           disabled={cell.disabled}
           id={cell.coordinates}
           key={cell.coordinates}
-          onChange={handleOnChange}
           onClick={handleOnClick}
+          onKeyDown={handleOnKeyDown}
+          readOnly={true}
           type='tel'
           value={cell.value}
         />
