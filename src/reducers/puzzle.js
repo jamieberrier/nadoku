@@ -1,3 +1,5 @@
+import { column, conflict, highlight, nonConflict, square, unSelect } from '../utilities/puzzle.js';
+
 export default (state = [], action) => {
   switch (action.type) {
     case "SET_PUZZLE":
@@ -9,43 +11,36 @@ export default (state = [], action) => {
       const colNum = action.id.slice(-1)
       // column index
       const colIndex = colNum - 1
-      let cellColumn = []
       // uppermost row index of the square
       let rowStart = rowIndex - (rowIndex % 3)
       // leftmost column index of the square
-	    let colStart = colIndex - (colIndex % 3)
-      let cellSquare = []
-      // add cells in the square to cellSquare
-      for (let i = 0; i < 3; i++) {
-        cellSquare[i] = cellSquare[i] || []
-        for (let j = 0; j < 3; j++) {
-          cellSquare[i].push(state[rowStart + i][colStart + j])
-        }
-      }
-      // add cells in the column to cellColumn
-      for (const row of [...state]) {
-        for (const cell of row) {
-          if (cell.coordinates.includes(colNum)) {
-            cellColumn.push(cell)
-          }
-        }
-      }
+      let colStart = colIndex - (colIndex % 3)
+      // cells in the same column
+      let cellColumn = column([...state], colNum)
+      // cells in the same square
+      let cellSquare = square([...state], rowStart, colStart).flat()
       // check for match(es) in row, column, and square
       const rowMatch = cellRow.some(cell => cell.value === action.value)
       const colMatch = cellColumn.some(cell => cell.value === action.value)
-      const squareMatch = cellSquare.flat().some(cell => cell.value === action.value)
+      const squareMatch = cellSquare.some(cell => cell.value === action.value)
       // create new row
       const newRow = cellRow.map(cell => {
+        // if cell matches coordinates
         if (cell.coordinates === action.id) {
-          // if cell was previously a conflict
-          if (cell.className.includes('conflict')) {
-            const newClass = cell.className.split(' conflict').shift()
-            return Object.assign({}, cell, {className: newClass, value: action.value})
-          } else if (rowMatch || colMatch || squareMatch) { // cell has a conflict
-            const conflict = cell.className + ' conflict'
-            return Object.assign({}, cell, {className: conflict, value: action.value})
+          // check value for empty string
+          if(action.value === "") {
+            return Object.assign({}, cell, {className: nonConflict(cell), value: action.value})
+          }
+          // if conflict
+          if (rowMatch || colMatch || squareMatch) {
+            // if class name already includes 'conflict'
+            if (cell.className.includes('conflict')) {
+              return Object.assign({}, cell, {value: action.value})
+            } else { // add conflict to className
+              return Object.assign({}, cell, {className: conflict(cell), value: action.value})
+            }
           } else { // no conflicts
-            return Object.assign({}, cell, {value: action.value})
+            return Object.assign({}, cell, {className: highlight(cell), value: action.value})
           }
         }
         // return all the ones not changing
@@ -55,11 +50,11 @@ export default (state = [], action) => {
     case "HIGHLIGHT_CELLS":
       return state.map(row => {
         return row.map(cell => {
-          if (cell.value === action.value) {
-            const highlighted = cell.className + ' selected'
-            return Object.assign({}, cell, {className: highlighted})
+          const newCell = Object.assign({}, cell, {className: unSelect(cell)})
+          if (newCell.value === action.value) {
+            return Object.assign({}, newCell, {className: highlight(cell)})
           }
-          return cell
+          return newCell
         })
       })
     case "CLEAR_PUZZLE":
