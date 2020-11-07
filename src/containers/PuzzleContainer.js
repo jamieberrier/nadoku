@@ -16,34 +16,34 @@ class PuzzleContainer extends Component {
       this.props.checkIfSolved(this.props.puzzle, this.props.solution)
     }
   }
-
+  
   handleOnClick = event => {
     const { id } = event.target
     const { rowindex } = event.target.dataset
-    // using key pad
+    // if number selected from key pad
     if (this.props.selectedNumber) {
-      this.props.updateCellValue({rowIndex: rowindex, id: id, value: this.props.selectedNumber})
+      this.props.updateCellValue(id, rowindex, this.props.selectedNumber)
     } 
   }
 
-  // typing or deleting (key pad)
-  handleOnChange = event => {
+  // prevents typing in cells
+  handleOnKeyDown = event => {
     const { id } = event.target
-    let { value } = event.target
     const { rowindex } = event.target.dataset
-    // if typing, validate input
-    if (isNaN(value) || value < 1 || value > 9) {
-      this.props.updateCellValue({rowIndex: rowindex, id: id, value: ""})
-    } else { // using key pad
-      this.props.updateCellValue({rowIndex: rowindex, id: id, value: value})
-    }
+
+    this.props.updateCellValue(id, rowindex, "")
   }
   
   render() {
+    const { puzzle } = this.props
     return (
       <Section id='PuzzleSection'>
         <Container id='PuzzleContainer'>
-          <PuzzleGrid puzzle={this.props.puzzle} handleOnChange={this.handleOnChange} handleOnClick={this.handleOnClick} />
+          <PuzzleGrid 
+            puzzle={puzzle} 
+            handleOnClick={this.handleOnClick}
+            handleOnKeyDown={this.handleOnKeyDown}
+          />
           <NumberContainer />
         </Container>
       </Section>
