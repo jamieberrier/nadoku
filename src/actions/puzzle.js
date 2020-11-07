@@ -1,10 +1,10 @@
 import SudokuToolCollection from 'sudokutoolcollection';
 
 import { generateSolution } from './solution.js';
+import { setCellClass } from '../utilities/puzzle.js';
 
 const sudoku = SudokuToolCollection()
 
-// syncronous action creators
 export const setPuzzle = rows => {
   return {
     type: 'SET_PUZZLE',
@@ -12,11 +12,11 @@ export const setPuzzle = rows => {
   }
 }
 
-export const updateCellValue = ({ rowIndex, id, value }) => {
+export const updateCellValue = (id, rowIndex, value) => {
   return {
     type: 'UPDATE_CELL_VALUE',
-    rowIndex,
     id,
+    rowIndex,
     value
   }
 }
@@ -31,18 +31,6 @@ export const highlightCells = value => {
 export const clearPuzzle = () => {
   return {
     type: 'CLEAR_PUZZLE'
-  }
-}
-
-export const setCellClass = coordinates => {
-  if (coordinates === 'C3' || coordinates === 'F3' || coordinates === 'C6' || coordinates === 'F6') {
-    return "cell rightborder bottomborder"
-  } else if (coordinates.includes('C') || coordinates.includes('F')) {
-    return "cell bottomborder"
-  } else if (coordinates.includes('3') || coordinates.includes('6')) {
-    return "cell rightborder"
-  } else {
-    return "cell"
   }
 }
 
@@ -67,6 +55,6 @@ export const generatePuzzle = level => {
     }
 
     dispatch(generateSolution(puzzleString))
-    return dispatch(setPuzzle(rows))
+    dispatch(setPuzzle(rows))
   }
 }
