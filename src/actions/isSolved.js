@@ -16,19 +16,25 @@ export const clearIsSolved = () => {
 
 export const checkIfSolved = (puzzle, solution) => {
   return dispatch => {
+    let cellClassNames = []
     const filled = value => value !== ""
+    const noConflict = className => !className.includes('conflict')
 
     const cellValues = puzzle.map(row => {
       return row.map(cell => {
+        cellClassNames.push(cell.className)
         return cell.value
       })
     }).flat()
-    
+  
+    // if all cells are filled
     if (cellValues.every(filled)) {
-      if (cellValues.join('') === solution) {
+      // if matches solution
+      if (cellValues.join('') === solution || cellClassNames.every(noConflict)) {
         dispatch(showModal('success', 'You Solved The Puzzle!'))
         return dispatch(setIsSolved(true))
-      } else {
+      }
+      else {
         dispatch(showModal('info', 'The Puzzle Is Incorrect'))
       }
     }
