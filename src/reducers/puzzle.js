@@ -25,21 +25,22 @@ export default (state = [], action) => {
       const squareMatch = cellSquare.some(cell => cell.value === action.value)
       // create new row
       const newRow = cellRow.map(cell => {
-        // if cell matches coordinates
+        // if coordinates match
         if (cell.coordinates === action.id) {
-          // check value for empty string
-          if(action.value === "") {
-            return Object.assign({}, cell, {className: nonConflict(cell), value: action.value})
+          // check if previous conflict
+          if (cell.className.includes('conflict')) {
+            cell.className = nonConflict(cell)
           }
-          // if conflict
+          // check if value is empty string
+          if(action.value === "") {
+            return Object.assign({}, cell, {className: unSelect(cell), value: action.value})
+          }
+          // check if conflict
           if (rowMatch || colMatch || squareMatch) {
-            // if class name already includes 'conflict'
-            if (cell.className.includes('conflict')) {
-              return Object.assign({}, cell, {value: action.value})
-            } else { // add conflict to className
-              return Object.assign({}, cell, {className: conflict(cell), value: action.value})
-            }
+            // add 'conflict' to className
+            return Object.assign({}, cell, {className: conflict(cell), value: action.value})
           } else { // no conflicts
+            // add 'selected' to className
             return Object.assign({}, cell, {className: highlight(cell), value: action.value})
           }
         }
