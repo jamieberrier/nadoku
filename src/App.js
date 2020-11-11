@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 
 import './App.css';
-import { getCurrentUser } from './actions/currentUser.js';
+import { getCurrentUser, clearCurrentUser } from './actions/currentUser.js';
 import Login from './components/Login.js';
 import NavBar from './components/NavBar.js';
 import Signup from './components/Signup.js';
@@ -16,6 +16,10 @@ class App extends Component {
 
   componentDidMount() {
     this.props.getCurrentUser()
+  }
+
+  componentWillUnmount() {
+    this.props.clearCurrentUser()
   }
 
   render() {
@@ -54,4 +58,4 @@ const mapStateToProps = ({ currentUser, displayModal }) => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, { getCurrentUser })(App));
+export default withRouter(connect(mapStateToProps, { getCurrentUser,  clearCurrentUser })(App));
