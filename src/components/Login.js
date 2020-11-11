@@ -61,13 +61,20 @@ const Login = ({ history, loginFormData, login, resetLoginForm, updateLoginForm 
           </Field>
           <Field>
             <Control>
-              <ButtonFullWidth color={'info'} text={'Log In'} handleOnClick={handleSubmit} />
+              <ButtonFullWidth 
+                color={'info'} 
+                text={'Log In'} 
+                handleOnClick={handleSubmit} />
             </Control>
           </Field>
           <Field>
             <Control>
               <Link to='/'>
-                <ButtonFullWidth color={'danger'} outlined={true} text={'Cancel'} handleOnClick={handleOnClick} />
+                <ButtonFullWidth 
+                  color={'danger'} 
+                  outlined={true} 
+                  text={'Cancel'} 
+                  handleOnClick={handleOnClick} />
               </Link>
             </Control>
           </Field>

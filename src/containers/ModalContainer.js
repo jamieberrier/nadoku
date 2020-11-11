@@ -11,7 +11,12 @@ const ModalContainer  = ({ displayModal, hideModal }) => {
   }
 
   return (
-    <DisplayModal show={displayModal.show} color={displayModal.color} content={displayModal.content} handleOnClose={handleOnClose} />
+    <DisplayModal 
+      show={displayModal.show} 
+      color={displayModal.color} 
+      content={displayModal.content} 
+      handleOnClose={handleOnClose} 
+    />
   )
 }
 

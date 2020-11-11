@@ -84,13 +84,22 @@ const Signup = ({ history, signupFormData, resetSignupForm, signup, updateSignup
           </Field>
           <Field>
             <Control>
-              <ButtonFullWidth color={'info'} text={'Sign Up'} handleOnClick={handleSubmit} />
+              <ButtonFullWidth 
+                color={'info'} 
+                text={'Sign Up'} 
+                handleOnClick={handleSubmit} 
+              />
             </Control>
           </Field>
           <Field>
             <Control>
               <Link to='/'>
-                <ButtonFullWidth color={'danger'} outlined={true} text={'Cancel'} handleOnClick={handleOnClick} />
+                <ButtonFullWidth 
+                  color={'danger'} 
+                  outlined={true} 
+                  text={'Cancel'} 
+                  handleOnClick={handleOnClick} 
+                />
               </Link>
             </Control>
           </Field>
