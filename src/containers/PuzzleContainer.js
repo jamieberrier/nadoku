@@ -20,9 +20,12 @@ class PuzzleContainer extends Component {
   handleOnClick = event => {
     const { id } = event.target
     const { rowindex } = event.target.dataset
-    // if number selected from key pad
+    // if a number is selected from the key pad
     if (this.props.selectedNumber) {
-      this.props.updateCellValue(id, rowindex, this.props.selectedNumber)
+      // if the cell is not already filled with the selected number
+      if (event.target.value !== this.props.selectedNumber) {
+        this.props.updateCellValue(id, rowindex, this.props.selectedNumber)
+      }
     } 
   }
 
