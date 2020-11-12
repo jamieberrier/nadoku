@@ -1,12 +1,13 @@
 import React from 'react';
 
 import 'react-bulma-components/dist/react-bulma-components.min.css';
-import { Button, Container } from 'react-bulma-components';
+import { Button, Container, Heading } from 'react-bulma-components';
 
 const NumberPad = ({ handleOnClick }) => {
 
   return (
     <Container id='NumberPadContainer'>
+      <Heading heading>*Click on a number on the Key Pad, then click on a cell to enter that number</Heading>
       {/* up to 786px */}
       <Button.Group position={'centered'} size={'medium'} id='NumberPad' className='is-hidden-tablet'>
         <Button color={'success'} rounded={true} onClick={handleOnClick} value='1'>1</Button>
