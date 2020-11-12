@@ -8,7 +8,7 @@ const Welcome = () => {
   return (
     <Section id='WelcomeSection'>
       <Heading className='has-text-info'>Welcome to Nadoku!</Heading>
-      <Heading subtitle>Please Log In or Sign Up</Heading>
+      <Heading heading subtitle size={6} className='has-text-dark'>Solve Sudoku puzzles while relaxing to the sounds of nature</Heading>
       <Container id='WelcomeContainer'>
         <Button.Group position={'centered'}>
           <Link to='/login'>
