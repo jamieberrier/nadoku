@@ -5,6 +5,7 @@ import displayModal from './displayModal.js';
 import isSolved from './isSolved.js';
 import loginForm from './loginForm.js';
 import puzzle from './puzzle.js';
+import remaining from './remaining.js';
 import selectedNumber from './selectedNumber.js';
 import signupForm from './signupForm.js';
 import solution from './solution.js';
@@ -17,6 +18,7 @@ export default combineReducers({
   isSolved,
   loginForm,
   puzzle,
+  remaining,
   selectedNumber,
   signupForm,
   solution,
