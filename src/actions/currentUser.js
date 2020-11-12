@@ -34,7 +34,7 @@ export const login = ({email, password}, history) => {
       } else {
         dispatch(setCurrentUser(user.data.attributes))
         dispatch(resetLoginForm())
-        if (history) {
+        if (history) { // Pushes a new entry onto the history stack
           history.push('/options')
         }
       }
