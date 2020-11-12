@@ -6,6 +6,7 @@ import 'react-bulma-components/dist/react-bulma-components.min.css';
 import NumberPad from '../components/NumberPad';
 import { setSelectedNumber } from '../actions/selectedNumber.js';
 import { highlightCells } from '../actions/puzzle.js';
+import Remaining from '../components/Remaining';
 
 const NumberContainer = ({ highlightCells, setSelectedNumber }) => {
   
@@ -17,7 +18,10 @@ const NumberContainer = ({ highlightCells, setSelectedNumber }) => {
   }
 
   return (
-    <NumberPad handleOnClick={handleOnClick} />
+    <>
+      <NumberPad handleOnClick={handleOnClick} />
+      <Remaining />
+    </>
   )
 }
 
