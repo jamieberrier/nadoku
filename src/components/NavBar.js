@@ -8,17 +8,19 @@ import { Button, Heading, Level } from 'react-bulma-components';
 import { clearDifficulty } from '../actions/difficulty.js';
 import { clearIsSolved } from '../actions/isSolved.js';
 import { clearPuzzle } from '../actions/puzzle.js';
+import { clearRemaining } from '../actions/remaining.js';
 import { clearSelectedNumber } from '../actions/selectedNumber.js';
 import { clearSolution } from '../actions/solution.js';
 import { clearSound } from '../actions/sound.js';
 import { logout } from '../actions/currentUser.js';
 import PlayerContainer from '../containers/PlayerContainer.js';
 
-const NavBar = ({ difficulty, loggedIn, name, solution, sound, clearDifficulty, clearIsSolved, clearPuzzle, clearSelectedNumber, clearSolution, clearSound, logout }) => {
+const NavBar = ({ difficulty, loggedIn, name, solution, sound, clearDifficulty, clearIsSolved, clearPuzzle, clearRemaining, clearSelectedNumber, clearSolution, clearSound, logout }) => {
   const handleOnClick = event => {
     clearDifficulty()
     clearIsSolved()
     clearPuzzle()
+    clearRemaining()
     clearSelectedNumber()
     clearSolution()
     clearSound()
@@ -113,4 +115,4 @@ const mapStateToProps = ({ currentUser, difficulty, solution, sound }) => {
   }
 }
 
-export default connect(mapStateToProps, { clearDifficulty, clearIsSolved, clearPuzzle, clearSelectedNumber, clearSolution, clearSound, logout })(NavBar);
+export default connect(mapStateToProps, { clearDifficulty, clearIsSolved, clearPuzzle, clearRemaining, clearSelectedNumber, clearSolution, clearSound, logout })(NavBar);
