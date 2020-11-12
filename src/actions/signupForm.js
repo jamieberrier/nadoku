@@ -45,6 +45,8 @@ export const signup = ({email, username, password, passwordConfirmation}, histor
       } else {
         dispatch(setCurrentUser(user.data.attributes))
         dispatch(resetSignupForm())
+        dispatch(showModal('info', 
+          'Select a puzzle difficulty and a nature sound to start the puzzle. To solve the puzzle: Use the key pad to select a number and click a cell to insert the number. Use your delete key to erase a number.'))
         if (history) { // Pushes a new entry onto the history stack
           history.push('/options')
         }
