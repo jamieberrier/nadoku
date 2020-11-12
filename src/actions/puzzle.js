@@ -2,6 +2,7 @@ import SudokuToolCollection from 'sudokutoolcollection';
 
 import { generateSolution } from './solution.js';
 import { setCellClass } from '../utilities/puzzle.js';
+import { generateRemaining} from './remaining.js';
 
 const sudoku = SudokuToolCollection()
 
@@ -54,6 +55,7 @@ export const generatePuzzle = level => {
       rows.push(row)
     }
 
+    dispatch(generateRemaining(puzzleString))
     dispatch(generateSolution(puzzleString))
     dispatch(setPuzzle(rows))
   }
